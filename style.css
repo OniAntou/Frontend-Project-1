@@ -145,6 +145,10 @@ a:focus-visible, button:focus-visible {
 /* ==========================================================================
    PERFECTLY SYNCHRONIZED PURE WHITE HORIZONTAL WIPE TRANSITION
    ========================================================================== */
+::view-transition-group(root) {
+    z-index: 1;
+}
+
 ::view-transition-old(root) {
     animation: none !important;
     z-index: 1;
@@ -164,28 +168,30 @@ a:focus-visible, button:focus-visible {
     }
 }
 
+::view-transition-group(theme-beam) {
+    z-index: 999999 !important;
+    animation: whiteBarSweepMotion 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards !important;
+}
+
+::view-transition-old(theme-beam),
+::view-transition-new(theme-beam) {
+    animation: none !important;
+    height: 100%;
+}
+
 .theme-beam-runner {
+    view-transition-name: theme-beam;
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 99999;
-    pointer-events: none;
-    overflow: hidden;
-}
-
-.beam-track-line {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 2px;
+    width: 2.5px;
     height: 100vh;
     background: #FFFFFF;
-    box-shadow: none;
-    transform: translate3d(-10px, 0, 0);
+    box-shadow: 0 0 2px rgba(255, 255, 255, 0.8);
+    z-index: 99999;
+    pointer-events: none;
     opacity: 0;
-    will-change: transform, opacity;
+    transform: translate3d(0, 0, 0);
 }
 
 @keyframes whiteBarSweepMotion {
@@ -203,7 +209,8 @@ a:focus-visible, button:focus-visible {
     }
 }
 
-.theme-beam-runner.is-sweeping .beam-track-line {
+.theme-beam-runner.is-sweeping {
+    opacity: 1;
     animation: whiteBarSweepMotion 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
