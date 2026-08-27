@@ -143,6 +143,153 @@ a:focus-visible, button:focus-visible {
 }
 
 /* ==========================================================================
+   ARCHIVAL PAPER GRAIN TEXTURE OVERLAY (Fine Art Print Feel)
+   ========================================================================== */
+.paper-grain-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 999;
+    opacity: 0.038;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+}
+
+/* ==========================================================================
+   FIXED ARCHITECTURAL MONOGRAPH PAGINATION RAIL
+   ========================================================================== */
+.monograph-rail {
+    position: fixed;
+    right: 28px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 16px;
+    pointer-events: auto;
+}
+
+.rail-header {
+    font-family: var(--font-display);
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 2.5px;
+    color: var(--text-muted);
+    padding-right: 4px;
+}
+
+.rail-track {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    padding: 10px 0;
+}
+
+.rail-track::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 5px;
+    width: 1px;
+    height: 100%;
+    background: var(--border-light);
+    z-index: 1;
+}
+
+.rail-progress-bar {
+    position: absolute;
+    top: 0;
+    right: 5px;
+    width: 1.5px;
+    height: 0%;
+    background: var(--c-jade);
+    z-index: 2;
+    transition: height 0.15s ease-out;
+}
+
+.rail-node {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    cursor: pointer;
+    padding-right: 0;
+}
+
+.rail-node-label {
+    font-family: var(--font-display);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    opacity: 0;
+    transform: translateX(6px);
+    transition: opacity 0.3s ease, transform 0.3s ease, color 0.3s ease;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+.rail-node-dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: var(--bg-void);
+    border: 1px solid var(--border-light);
+    display: block;
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+
+.rail-node:hover .rail-node-label,
+.rail-node.is-active .rail-node-label {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.rail-node:hover .rail-node-label {
+    color: var(--text-primary);
+}
+
+.rail-node.is-active .rail-node-label {
+    color: var(--c-jade);
+    font-weight: 800;
+}
+
+.rail-node:hover .rail-node-dot {
+    border-color: var(--text-pure);
+    transform: scale(1.2);
+}
+
+.rail-node.is-active .rail-node-dot {
+    background: var(--c-jade);
+    border-color: var(--c-jade);
+    transform: scale(1.15);
+}
+
+.rail-coords {
+    font-family: var(--font-serif-en);
+    font-size: 11px;
+    font-style: italic;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    padding-right: 4px;
+    white-space: nowrap;
+}
+
+@media (max-width: 1200px) {
+    .monograph-rail {
+        display: none;
+    }
+}
+
+/* ==========================================================================
    1. HERO STAGE (PURE EDITORIAL FINE ART)
    ========================================================================== */
 .hero-stage {

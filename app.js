@@ -192,4 +192,40 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         revealElements.forEach(el => el.classList.add('is-revealed'));
     }
+
+    // =========================================================================
+    // 5. ARCHITECTURAL MONOGRAPH PAGINATION & SCROLL PROGRESS
+    // =========================================================================
+    const railNodes = document.querySelectorAll('.rail-node');
+    const progressBar = document.getElementById('rail-progress-bar');
+    const sections = document.querySelectorAll('header.hero-stage, section');
+
+    function updateMonographRail() {
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+
+        if (progressBar) {
+            progressBar.style.height = `${scrollPercent}%`;
+        }
+
+        let currentSectionId = 'prologue';
+        sections.forEach(section => {
+            const rect = section.getBoundingClientRect();
+            if (rect.top <= window.innerHeight * 0.45 && rect.bottom >= window.innerHeight * 0.2) {
+                currentSectionId = section.id;
+            }
+        });
+
+        railNodes.forEach(node => {
+            if (node.getAttribute('data-section') === currentSectionId) {
+                node.classList.add('is-active');
+            } else {
+                node.classList.remove('is-active');
+            }
+        });
+    }
+
+    window.addEventListener('scroll', updateMonographRail, { passive: true });
+    updateMonographRail();
 });
