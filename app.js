@@ -5,16 +5,12 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     // =========================================================================
-    // 0. ATMOSPHERE THEME SWITCHER (EMERALD DAWN / GOTHIC ECLIPSE)
+    // 0. ATMOSPHERE THEME SWITCHER WITH CINEMATIC HORIZONTAL WIPE
     // =========================================================================
     const atmosphereBtn = document.getElementById('atmosphere-toggle');
     const atmosphereLabel = document.getElementById('atmosphere-label');
-
-    function getThemeColorRGB() {
-        return document.body.getAttribute('data-atmosphere') === 'gothic'
-            ? '181, 104, 255'
-            : '0, 229, 153';
-    }
+    const themeCurtain = document.getElementById('theme-curtain');
+    let isThemeTransitioning = false;
 
     const savedTheme = localStorage.getItem('rushia-atmosphere') || 'emerald';
     if (savedTheme === 'gothic') {
@@ -24,15 +20,49 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (atmosphereBtn) {
         atmosphereBtn.addEventListener('click', () => {
-            const currentTheme = document.body.getAttribute('data-atmosphere');
-            if (currentTheme === 'gothic') {
-                document.body.removeAttribute('data-atmosphere');
-                localStorage.setItem('rushia-atmosphere', 'emerald');
-                if (atmosphereLabel) atmosphereLabel.textContent = '✦ Emerald Dawn';
+            if (isThemeTransitioning) return;
+            isThemeTransitioning = true;
+
+            const isCurrentGothic = document.body.getAttribute('data-atmosphere') === 'gothic';
+            const nextTheme = isCurrentGothic ? 'emerald' : 'gothic';
+
+            if (themeCurtain) {
+                // Phase 1: Blade sweeps across from left to cover screen
+                themeCurtain.classList.remove('wipe-out');
+                themeCurtain.classList.add('wipe-in');
+
+                setTimeout(() => {
+                    // Midpoint: Screen is 100% covered -> switch theme seamlessly
+                    if (nextTheme === 'gothic') {
+                        document.body.setAttribute('data-atmosphere', 'gothic');
+                        localStorage.setItem('rushia-atmosphere', 'gothic');
+                        if (atmosphereLabel) atmosphereLabel.textContent = '☾ Gothic Eclipse';
+                    } else {
+                        document.body.removeAttribute('data-atmosphere');
+                        localStorage.setItem('rushia-atmosphere', 'emerald');
+                        if (atmosphereLabel) atmosphereLabel.textContent = '✦ Emerald Dawn';
+                    }
+
+                    // Phase 2: Blade sweeps out towards right to unveil new theme
+                    themeCurtain.classList.remove('wipe-in');
+                    themeCurtain.classList.add('wipe-out');
+
+                    setTimeout(() => {
+                        themeCurtain.classList.remove('wipe-out');
+                        isThemeTransitioning = false;
+                    }, 380);
+                }, 380);
             } else {
-                document.body.setAttribute('data-atmosphere', 'gothic');
-                localStorage.setItem('rushia-atmosphere', 'gothic');
-                if (atmosphereLabel) atmosphereLabel.textContent = '☾ Gothic Eclipse';
+                if (nextTheme === 'gothic') {
+                    document.body.setAttribute('data-atmosphere', 'gothic');
+                    localStorage.setItem('rushia-atmosphere', 'gothic');
+                    if (atmosphereLabel) atmosphereLabel.textContent = '☾ Gothic Eclipse';
+                } else {
+                    document.body.removeAttribute('data-atmosphere');
+                    localStorage.setItem('rushia-atmosphere', 'emerald');
+                    if (atmosphereLabel) atmosphereLabel.textContent = '✦ Emerald Dawn';
+                }
+                isThemeTransitioning = false;
             }
         });
     }

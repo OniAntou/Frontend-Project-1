@@ -143,6 +143,48 @@ a:focus-visible, button:focus-visible {
 }
 
 /* ==========================================================================
+   CINEMATIC HORIZONTAL THEME WIPE TRANSITION CURTAIN
+   ========================================================================== */
+.theme-transition-curtain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 99999;
+    pointer-events: none;
+    display: flex;
+    align-items: stretch;
+}
+
+.curtain-blade {
+    width: 100%;
+    height: 100%;
+    background: #090B0F;
+    border-right: 2px solid var(--c-jade);
+    transform: scaleX(0);
+    transform-origin: left;
+    will-change: transform;
+}
+
+body[data-atmosphere="gothic"] .curtain-blade {
+    background: #0B0813;
+    border-right: 2px solid var(--c-jade);
+}
+
+.theme-transition-curtain.wipe-in .curtain-blade {
+    transform-origin: left;
+    transform: scaleX(1);
+    transition: transform 0.38s cubic-bezier(0.7, 0, 0.3, 1);
+}
+
+.theme-transition-curtain.wipe-out .curtain-blade {
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform 0.38s cubic-bezier(0.7, 0, 0.3, 1);
+}
+
+/* ==========================================================================
    ARCHIVAL PAPER GRAIN TEXTURE OVERLAY (Fine Art Print Feel)
    ========================================================================== */
 .paper-grain-overlay {
