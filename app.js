@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 void themeBeamRunner.offsetWidth; // Force reflow
                 themeBeamRunner.classList.add('is-sweeping');
 
-                // Switch theme exactly at midpoint as beam crosses the center
+                // Switch theme precisely at midpoint (300ms) as white bar crosses the screen center
                 setTimeout(() => {
                     if (nextTheme === 'gothic') {
                         document.body.setAttribute('data-atmosphere', 'gothic');
@@ -43,13 +43,13 @@ document.addEventListener('DOMContentLoaded', () => {
                         localStorage.setItem('rushia-atmosphere', 'emerald');
                         if (atmosphereLabel) atmosphereLabel.textContent = '✦ Emerald Dawn';
                     }
-                }, 280);
+                }, 300);
 
-                // Clear after sweep completes (650ms)
+                // Clear after sweep completes (600ms)
                 setTimeout(() => {
                     themeBeamRunner.classList.remove('is-sweeping');
                     isThemeTransitioning = false;
-                }, 650);
+                }, 600);
             } else {
                 if (nextTheme === 'gothic') {
                     document.body.setAttribute('data-atmosphere', 'gothic');

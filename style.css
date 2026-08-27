@@ -81,6 +81,7 @@ body {
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
     position: relative;
+    transition: background-color 0.45s cubic-bezier(0.4, 0, 0.2, 1), color 0.45s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 ::selection {
@@ -143,7 +144,7 @@ a:focus-visible, button:focus-visible {
 }
 
 /* ==========================================================================
-   CINEMATIC HORIZONTAL BEAM TRANSITION BAR
+   MINIMAL PURE WHITE HORIZONTAL TRANSITION BAR
    ========================================================================== */
 .theme-beam-runner {
     position: fixed;
@@ -160,34 +161,34 @@ a:focus-visible, button:focus-visible {
     position: absolute;
     top: 0;
     left: 0;
-    width: 60px;
+    width: 2px;
     height: 100vh;
-    background: linear-gradient(to right, transparent, rgba(var(--c-jade-rgb), 0.18) 70%, var(--c-jade) 100%);
-    border-right: 2.5px solid var(--c-jade);
-    transform: translate3d(-100px, 0, 0);
+    background: #FFFFFF;
+    box-shadow: none;
+    transform: translate3d(-10px, 0, 0);
     opacity: 0;
     will-change: transform, opacity;
 }
 
-@keyframes beamSweepMotion {
+@keyframes whiteBarSweepMotion {
     0% {
-        transform: translate3d(-80px, 0, 0);
+        transform: translate3d(-10px, 0, 0);
         opacity: 0;
     }
-    10% {
+    4% {
         opacity: 1;
     }
-    90% {
+    96% {
         opacity: 1;
     }
     100% {
-        transform: translate3d(calc(100vw + 80px), 0, 0);
+        transform: translate3d(calc(100vw + 10px), 0, 0);
         opacity: 0;
     }
 }
 
 .theme-beam-runner.is-sweeping .beam-track-line {
-    animation: beamSweepMotion 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation: whiteBarSweepMotion 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 /* ==========================================================================
