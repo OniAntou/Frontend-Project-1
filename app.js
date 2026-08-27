@@ -192,4 +192,44 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         revealElements.forEach(el => el.classList.add('is-revealed'));
     }
+
+    // =========================================================================
+    // 5. MINIMAL ARCHITECTURAL DRAFTING RULER SCROLL TRACKING
+    // =========================================================================
+    const rulerNodes = document.querySelectorAll('.ruler-node');
+    const rulerIndicator = document.getElementById('ruler-indicator');
+    const sections = document.querySelectorAll('header.hero-stage, section');
+
+    function updateArchitectRuler() {
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const rawPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        const clampedPercent = Math.min(Math.max(rawPercent, 0), 100);
+
+        if (rulerIndicator) {
+            // Ruler height is 240px, indicator height is 20px -> max top is 220px
+            const maxTravel = 220;
+            const topPx = (clampedPercent / 100) * maxTravel;
+            rulerIndicator.style.top = `${topPx}px`;
+        }
+
+        let currentSectionId = 'prologue';
+        sections.forEach(section => {
+            const rect = section.getBoundingClientRect();
+            if (rect.top <= window.innerHeight * 0.45 && rect.bottom >= window.innerHeight * 0.2) {
+                currentSectionId = section.id;
+            }
+        });
+
+        rulerNodes.forEach(node => {
+            if (node.getAttribute('data-section') === currentSectionId) {
+                node.classList.add('is-active');
+            } else {
+                node.classList.remove('is-active');
+            }
+        });
+    }
+
+    window.addEventListener('scroll', updateArchitectRuler, { passive: true });
+    updateArchitectRuler();
 });
