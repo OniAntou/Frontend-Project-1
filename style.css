@@ -1,36 +1,36 @@
 /* ==========================================================================
-   URUHA RUSHIA - HAUTE COUTURE EXHIBITION ARCHIVE
-   Anti-AI-Slop Architecture • Authentic Japanese Museum Editorial
-   Zero Gimmicks • Zero Generic Pills • Pure Visual & Typographic Nobility
+   URUHA RUSHIA - TRIBUTE MONOGRAPH & POETIC ART ARCHIVE
+   Human Curated Memorial Edition • Editorial Asymmetry • Zero AI Tropes
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Shippori+Mincho:wght@600;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Cormorant+Garamond:ital,wght@0,500;0,700;1,400;1,600&family=Noto+Serif+JP:wght@400;600;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Shippori+Mincho:wght@500;700;800;900&display=swap');
 
 :root {
-    --bg-void: #06080B;
-    --bg-surface: #0B0E13;
-    --bg-elevated: #10151C;
+    --bg-void: #040507;
+    --bg-surface: #080B0F;
+    --bg-card: #0D1117;
 
     --c-jade: #00E599;
-    --c-jade-subtle: rgba(0, 229, 153, 0.15);
+    --c-jade-light: #5CFFD4;
+    --c-jade-dim: rgba(0, 229, 153, 0.12);
     --c-pink: #FFA3B8;
+    --c-gold: #D4AF37;
 
     --text-pure: #FFFFFF;
-    --text-primary: #F0F3F6;
-    --text-secondary: #8E9CAE;
-    --text-muted: #536273;
+    --text-primary: #ECEFF2;
+    --text-secondary: #8B98A8;
+    --text-muted: #4A5665;
 
-    --border: #17202B;
-    --border-light: rgba(255, 255, 255, 0.08);
+    --border: #131A24;
+    --border-light: rgba(255, 255, 255, 0.07);
 
+    --font-serif-en: 'Cormorant Garamond', serif;
     --font-display: 'Cinzel', serif;
-    --font-kanji: 'Shippori Mincho', serif;
-    --font-jp: 'Noto Sans JP', sans-serif;
+    --font-kanji: 'Shippori Mincho', 'Noto Serif JP', serif;
     --font-body: 'Plus Jakarta Sans', sans-serif;
-    --font-mono: 'JetBrains Mono', monospace;
 
-    --ease-human: cubic-bezier(0.16, 1, 0.3, 1);
-    --transition: all 0.35s var(--ease-human);
+    --ease-human: cubic-bezier(0.19, 1, 0.22, 1);
+    --transition: all 0.5s var(--ease-human);
 }
 
 /* Global Reset */
@@ -49,7 +49,7 @@ html {
 body {
     font-family: var(--font-body);
     font-size: 15px;
-    line-height: 1.8;
+    line-height: 1.9;
     background-color: var(--bg-void);
     color: var(--text-primary);
     -webkit-font-smoothing: antialiased;
@@ -58,26 +58,25 @@ body {
 
 ::selection {
     background-color: var(--c-jade);
-    color: #06080B;
+    color: #040507;
 }
 
-/* Focus Ring for Accessibility */
 a:focus-visible, button:focus-visible {
     outline: 2px solid var(--c-jade);
     outline-offset: 4px;
 }
 
 .container {
-    max-width: 1140px;
+    max-width: 1180px;
     margin: 0 auto;
-    padding: 0 36px;
+    padding: 0 40px;
 }
 
-/* Hardware-Accelerated Scroll Reveal */
+/* Hardware-Accelerated Smooth Reveals */
 .reveal-on-scroll {
     opacity: 0;
-    transform: translate3d(0, 24px, 0);
-    transition: opacity 0.8s var(--ease-human), transform 0.8s var(--ease-human);
+    transform: translate3d(0, 28px, 0);
+    transition: opacity 0.9s var(--ease-human), transform 0.9s var(--ease-human);
     will-change: opacity, transform;
 }
 
@@ -87,9 +86,9 @@ a:focus-visible, button:focus-visible {
 }
 
 /* ==========================================================================
-   1. MUSEUM CINEMATIC HERO (CLEAN, NO AI GIMMICKS)
+   1. POETIC PROLOGUE (HERO STAGE)
    ========================================================================== */
-.hero-stage {
+.tribute-hero {
     min-height: 100dvh;
     display: flex;
     flex-direction: column;
@@ -112,8 +111,8 @@ a:focus-visible, button:focus-visible {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 20%;
-    filter: brightness(0.62) contrast(1.1);
+    object-position: center 25%;
+    filter: brightness(0.55) contrast(1.15);
 }
 
 .hero-vignette {
@@ -122,71 +121,64 @@ a:focus-visible, button:focus-visible {
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at 60% 40%, rgba(6, 8, 11, 0.15) 0%, rgba(6, 8, 11, 0.7) 70%, #06080B 100%),
-                linear-gradient(to bottom, rgba(6, 8, 11, 0.8) 0%, transparent 25%, transparent 60%, #06080B 100%);
+    background: radial-gradient(circle at 60% 40%, rgba(4, 5, 7, 0.15) 0%, rgba(4, 5, 7, 0.75) 65%, #040507 100%),
+                linear-gradient(to bottom, rgba(4, 5, 7, 0.85) 0%, transparent 30%, transparent 60%, #040507 100%);
     pointer-events: none;
 }
 
-/* Top Exhibition Header */
-.hero-header {
+/* Top Monograph Navigation */
+.monograph-nav {
     position: relative;
     z-index: 10;
-    padding: 36px 48px;
+    padding: 40px 48px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.hero-identity {
-    display: flex;
-    align-items: baseline;
-    gap: 14px;
+.monograph-title-group {
     text-decoration: none;
 }
 
-.hero-identity-en {
+.monograph-title-en {
     font-family: var(--font-display);
-    font-size: 17px;
+    font-size: 16px;
     font-weight: 800;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
     color: var(--text-pure);
-    transition: color 0.2s ease;
+    display: block;
+    margin-bottom: 2px;
 }
 
-.hero-identity-jp {
+.monograph-title-jp {
     font-family: var(--font-kanji);
-    font-size: 13px;
+    font-size: 12px;
     color: var(--c-jade);
     letter-spacing: 2px;
 }
 
-.hero-identity:hover .hero-identity-en {
-    color: var(--c-jade);
-}
-
-.hero-nav-links {
+.monograph-nav-list {
     display: flex;
     gap: 36px;
     list-style: none;
 }
 
-.hero-nav-links a {
+.monograph-nav-list a {
     color: var(--text-secondary);
     text-decoration: none;
-    font-size: 13px;
-    font-weight: 600;
+    font-family: var(--font-serif-en);
+    font-size: 16px;
+    font-style: italic;
     letter-spacing: 1px;
-    text-transform: uppercase;
-    transition: color 0.2s ease;
-    padding: 6px 0;
+    transition: color 0.25s ease;
 }
 
-.hero-nav-links a:hover {
-    color: var(--text-pure);
+.monograph-nav-list a:hover {
+    color: var(--c-jade);
 }
 
-/* Main Hero Typography Staging */
-.hero-main-content {
+/* Main Poetic Staging */
+.hero-poetic-stage {
     position: relative;
     z-index: 10;
     padding: 0 48px;
@@ -195,507 +187,645 @@ a:focus-visible, button:focus-visible {
     width: 100%;
 }
 
-.hero-gen-label {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    font-weight: 700;
-    color: var(--c-jade);
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    margin-bottom: 12px;
+.hero-poetic-stamp {
+    font-family: var(--font-serif-en);
+    font-size: 18px;
+    font-style: italic;
+    color: var(--c-pink);
+    letter-spacing: 1px;
+    margin-bottom: 8px;
     display: block;
 }
 
-.hero-monumental-h1 {
+.hero-name-monument {
     font-family: var(--font-display);
-    font-size: clamp(52px, 8vw, 98px);
+    font-size: clamp(56px, 8.5vw, 108px);
     font-weight: 900;
-    line-height: 0.96;
+    line-height: 0.94;
     letter-spacing: 2px;
     color: var(--text-pure);
-    margin-bottom: 6px;
-    text-shadow: 0 4px 40px rgba(0, 0, 0, 0.9);
+    margin-bottom: 8px;
+    text-shadow: 0 4px 40px rgba(0, 0, 0, 0.95);
 }
 
-.hero-kanji-title {
+.hero-kanji-subhead {
     font-family: var(--font-kanji);
     font-size: clamp(28px, 4vw, 44px);
     font-weight: 800;
     color: var(--c-jade);
     letter-spacing: 6px;
-    margin-bottom: 24px;
+    margin-bottom: 28px;
     display: block;
 }
 
-.hero-quote-text {
-    font-family: var(--font-jp);
-    font-size: 17px;
+.hero-eternal-quote {
+    font-family: var(--font-kanji);
+    font-size: clamp(17px, 2.2vw, 22px);
     font-weight: 600;
     color: var(--text-primary);
-    max-width: 660px;
-    margin-bottom: 20px;
-    line-height: 1.7;
-    text-shadow: 0 2px 16px rgba(0, 0, 0, 0.8);
-}
-
-.hero-description-p {
-    color: var(--text-secondary);
-    font-size: 15px;
-    line-height: 1.85;
-    max-width: 600px;
-    margin-bottom: 36px;
-}
-
-.hero-action-link {
-    display: inline-block;
-    color: var(--text-pure);
-    font-family: var(--font-display);
-    font-size: 13px;
-    font-weight: 800;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    text-decoration: none;
-    padding-bottom: 6px;
-    border-bottom: 2px solid var(--c-jade);
-    transition: var(--transition);
-}
-
-.hero-action-link:hover {
-    color: var(--c-jade);
-    padding-left: 8px;
-}
-
-/* Bottom Metric Rail */
-.hero-metric-bar {
-    position: relative;
-    z-index: 10;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    background: rgba(6, 8, 11, 0.92);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-}
-
-.hero-metric-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.hero-metric-item {
-    padding: 24px 32px;
-    border-right: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.hero-metric-item:last-child {
-    border-right: none;
-}
-
-.hero-metric-label {
-    font-family: var(--font-mono);
-    font-size: 10px;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    margin-bottom: 4px;
-}
-
-.hero-metric-value {
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--text-pure);
-}
-
-/* ==========================================================================
-   2. TALENT PROFILE DOSSIER (EXHIBITION PLAQUE)
-   ========================================================================== */
-.dossier-section {
-    padding: 130px 0;
-    border-bottom: 1px solid var(--border);
-    background: var(--bg-surface);
-    scroll-margin-top: 40px;
-}
-
-.dossier-grid {
-    display: grid;
-    grid-template-columns: 0.9fr 1.1fr;
-    gap: 68px;
-    align-items: center;
-}
-
-.dossier-visual-frame {
-    position: relative;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-card);
-    overflow: hidden;
-    background: var(--bg-elevated);
-    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.7);
-}
-
-.dossier-visual-frame img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    aspect-ratio: 4 / 5;
-    object-fit: cover;
-    object-position: top center;
-    transition: transform 0.6s var(--ease-human);
-}
-
-.dossier-visual-frame:hover img {
-    transform: scale(1.03);
-}
-
-.dossier-frame-caption {
-    padding: 16px 24px;
-    background: var(--bg-void);
-    border-top: 1px solid var(--border);
-    display: flex;
-    justify-content: space-between;
-    font-size: 12px;
-    color: var(--text-secondary);
-}
-
-.dossier-section-kicker {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    font-weight: 700;
-    color: var(--c-jade);
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    margin-bottom: 14px;
-    display: block;
-}
-
-.dossier-title-h2 {
-    font-family: var(--font-kanji);
-    font-size: clamp(30px, 3.8vw, 44px);
-    font-weight: 800;
-    color: var(--text-pure);
-    line-height: 1.3;
+    max-width: 680px;
     margin-bottom: 24px;
+    line-height: 1.65;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.9);
 }
 
-.dossier-essay {
+.hero-intimate-essay {
     color: var(--text-secondary);
     font-size: 15px;
     line-height: 1.9;
+    max-width: 580px;
     margin-bottom: 36px;
 }
 
-.dossier-specs-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.dossier-specs-table tr {
-    border-bottom: 1px solid var(--border);
-}
-
-.dossier-specs-table tr:first-child {
-    border-top: 1px solid var(--border);
-}
-
-.dossier-specs-table th {
-    text-align: left;
-    padding: 16px 0;
-    font-family: var(--font-mono);
-    font-size: 11px;
-    font-weight: 600;
-    color: var(--text-muted);
-    letter-spacing: 1px;
-    width: 38%;
-}
-
-.dossier-specs-table td {
-    padding: 16px 0;
-    font-size: 14px;
-    font-weight: 700;
+.hero-scroll-cue {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
     color: var(--text-pure);
+    font-family: var(--font-serif-en);
+    font-size: 15px;
+    font-style: italic;
+    letter-spacing: 1.5px;
+    text-decoration: none;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--c-jade);
+    transition: var(--transition);
 }
 
-/* ==========================================================================
-   3. WARDROBE LOOKBOOK (ASYMMETRICAL SPREAD)
-   ========================================================================== */
-.lookbook-section {
-    padding: 130px 0;
-    border-bottom: 1px solid var(--border);
-    scroll-margin-top: 40px;
-}
-
-.lookbook-header {
-    margin-bottom: 90px;
-}
-
-.lookbook-title {
-    font-family: var(--font-display);
-    font-size: clamp(34px, 4.5vw, 52px);
-    font-weight: 800;
-    color: var(--text-pure);
-    letter-spacing: 1px;
-}
-
-.lookbook-spread {
-    display: flex;
-    flex-direction: column;
-    gap: 130px;
-}
-
-.spread-row-left {
-    display: grid;
-    grid-template-columns: 1.25fr 0.75fr;
-    gap: 68px;
-    align-items: center;
-}
-
-.spread-media {
-    background: var(--bg-surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-card);
-    overflow: hidden;
-    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
-}
-
-.spread-row-left .spread-media {
-    aspect-ratio: 16 / 11;
-}
-
-.spread-media img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: top center;
-    transition: transform 0.6s var(--ease-human);
-}
-
-.spread-media:hover img {
-    transform: scale(1.04);
-}
-
-.spread-row-right {
-    display: grid;
-    grid-template-columns: 0.75fr 1.25fr;
-    gap: 68px;
-    align-items: center;
-}
-
-.spread-row-right .spread-media {
-    aspect-ratio: 4 / 5;
-    max-height: 560px;
-}
-
-.spread-panorama {
-    display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: 68px;
-    align-items: center;
-}
-
-.spread-panorama .spread-media {
-    aspect-ratio: 16 / 10;
-}
-
-.spread-panorama .spread-media img {
-    object-position: center;
-}
-
-.spread-narrative {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-}
-
-.spread-era-stamp {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    font-weight: 700;
+.hero-scroll-cue:hover {
     color: var(--c-jade);
-    letter-spacing: 2px;
-    text-transform: uppercase;
+    padding-left: 6px;
 }
 
-.spread-name {
-    font-family: var(--font-kanji);
-    font-size: 30px;
-    font-weight: 800;
-    color: var(--text-pure);
-    line-height: 1.2;
-}
-
-.spread-critique {
-    color: var(--text-secondary);
+/* Poetic Footer Colophon on Hero */
+.hero-footer-whisper {
+    position: relative;
+    z-index: 10;
+    padding: 24px 48px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    background: rgba(4, 5, 7, 0.9);
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-serif-en);
+    font-style: italic;
     font-size: 14px;
-    line-height: 1.85;
+    color: var(--text-muted);
 }
 
 /* ==========================================================================
-   4. DISCOGRAPHY SINGLE SHOWCASE
+   2. ACT I: THE MEMORY OF JADE (HUMAN MEMOIR)
    ========================================================================== */
-.vinyl-section {
-    padding: 130px 0;
+.act-memoir-section {
+    padding: 140px 0;
     border-bottom: 1px solid var(--border);
     background: var(--bg-surface);
+    position: relative;
     scroll-margin-top: 40px;
 }
 
-.vinyl-spread {
+.act-title-cluster {
+    margin-bottom: 72px;
+}
+
+.act-roman-numeral {
+    font-family: var(--font-display);
+    font-size: 13px;
+    letter-spacing: 3px;
+    color: var(--c-jade);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.act-heading-h2 {
+    font-family: var(--font-kanji);
+    font-size: clamp(32px, 4.5vw, 48px);
+    font-weight: 800;
+    color: var(--text-pure);
+    letter-spacing: 2px;
+}
+
+.memoir-spread {
     display: grid;
-    grid-template-columns: 340px 1fr;
+    grid-template-columns: 0.95fr 1.05fr;
     gap: 72px;
     align-items: center;
 }
 
-.vinyl-sleeve {
+.memoir-frame-trigger {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    text-align: inherit;
+    display: block;
     width: 100%;
-    aspect-ratio: 1 / 1;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-card);
-    overflow: hidden;
-    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.85);
 }
 
-.vinyl-sleeve img {
+.memoir-artwork-wrapper {
+    position: relative;
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.85);
+    border: 1px solid var(--border);
+    transition: var(--transition);
+}
+
+.memoir-artwork-wrapper:hover {
+    border-color: var(--c-jade);
+    box-shadow: 0 30px 90px rgba(0, 0, 0, 0.9), 0 0 30px rgba(0, 229, 153, 0.15);
+}
+
+.memoir-artwork-wrapper img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: top center;
+    transition: transform 0.8s var(--ease-human);
+}
+
+.memoir-artwork-wrapper:hover img {
+    transform: scale(1.03);
+}
+
+.memoir-caption-bar {
+    padding: 16px 20px;
+    background: var(--bg-void);
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-serif-en);
+    font-style: italic;
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.memoir-text-side {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.memoir-prose-p {
+    color: var(--text-secondary);
+    font-size: 16px;
+    line-height: 1.95;
+}
+
+.memoir-pullquote {
+    border-left: 2px solid var(--c-jade);
+    padding-left: 24px;
+    margin: 12px 0;
+    font-family: var(--font-kanji);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-pure);
+    line-height: 1.7;
+}
+
+.memoir-footnote {
+    font-size: 13px;
+    color: var(--text-muted);
+    font-family: var(--font-serif-en);
+    font-style: italic;
+    letter-spacing: 0.5px;
+}
+
+/* ==========================================================================
+   3. ACT II: THE THREE VESTMENTS (CURATED ART GALLERY)
+   ========================================================================== */
+.act-gallery-section {
+    padding: 140px 0;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    scroll-margin-top: 40px;
+}
+
+.gallery-editorial-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 120px;
+}
+
+/* Feature Showcase (Centerpiece) */
+.gallery-feature-card {
+    display: grid;
+    grid-template-columns: 1.3fr 0.7fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.gallery-img-container {
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.7);
+    transition: var(--transition);
+}
+
+.gallery-img-container:hover {
+    border-color: var(--c-jade);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.85), 0 0 25px rgba(0, 229, 153, 0.15);
+}
+
+.gallery-feature-card .gallery-img-container {
+    aspect-ratio: 16 / 11;
+}
+
+.gallery-img-container img {
     display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.6s ease;
+    object-position: top center;
+    transition: transform 0.8s var(--ease-human);
 }
 
-.vinyl-sleeve:hover img {
+.gallery-img-container:hover img {
     transform: scale(1.035);
 }
 
-.vinyl-info h3 {
+.gallery-vignette-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+}
+
+.vignette-item {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.vignette-item .gallery-img-container {
+    aspect-ratio: 4 / 5;
+    max-height: 480px;
+}
+
+.gallery-card-narrative {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.gallery-epoch-tag {
+    font-family: var(--font-serif-en);
+    font-size: 14px;
+    font-style: italic;
+    color: var(--c-pink);
+    letter-spacing: 1px;
+}
+
+.gallery-piece-title {
     font-family: var(--font-kanji);
-    font-size: clamp(34px, 4.5vw, 48px);
-    font-weight: 900;
-    color: var(--text-pure);
-    margin-bottom: 6px;
-}
-
-.vinyl-credits {
-    font-size: 13px;
-    color: var(--text-secondary);
-    margin-bottom: 24px;
-    font-family: var(--font-jp);
-}
-
-.vinyl-desc {
-    color: var(--text-secondary);
-    font-size: 15px;
-    line-height: 1.85;
-    margin-bottom: 36px;
-    max-width: 620px;
-}
-
-.btn-stream {
-    display: inline-block;
-    color: var(--text-pure);
-    font-family: var(--font-display);
-    font-size: 13px;
+    font-size: 24px;
     font-weight: 800;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    text-decoration: none;
-    padding-bottom: 6px;
-    border-bottom: 2px solid var(--c-jade);
+    color: var(--text-pure);
+    line-height: 1.25;
+}
+
+.gallery-piece-desc {
+    color: var(--text-secondary);
+    font-size: 14px;
+    line-height: 1.85;
+}
+
+/* ==========================================================================
+   4. ACT III: MELODY OF GRATITUDE ("IRIS" THEATER)
+   ========================================================================== */
+.act-music-section {
+    padding: 140px 0;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg-surface);
+    position: relative;
+    scroll-margin-top: 40px;
+}
+
+.music-stage-spread {
+    display: grid;
+    grid-template-columns: 360px 1fr;
+    gap: 72px;
+    align-items: center;
+}
+
+.music-sleeve-frame {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9);
     transition: var(--transition);
 }
 
-.btn-stream:hover {
+.music-sleeve-frame:hover {
+    border-color: var(--c-jade);
+    box-shadow: 0 30px 90px rgba(0, 0, 0, 0.95), 0 0 30px rgba(0, 229, 153, 0.2);
+}
+
+.music-sleeve-frame img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+}
+
+.music-sleeve-frame:hover img {
+    transform: scale(1.035);
+}
+
+.music-narrative-side {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.music-kanji-title {
+    font-family: var(--font-kanji);
+    font-size: clamp(36px, 5vw, 54px);
+    font-weight: 900;
+    color: var(--text-pure);
+    line-height: 1.1;
+}
+
+.music-production-credits {
+    font-family: var(--font-serif-en);
+    font-size: 15px;
+    font-style: italic;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+}
+
+.music-lyrics-stanza {
+    border-left: 2px solid var(--c-pink);
+    padding-left: 20px;
+    font-family: var(--font-kanji);
+    font-size: 16px;
+    color: var(--text-primary);
+    line-height: 1.8;
+    margin-bottom: 12px;
+}
+
+.music-editorial-note {
+    color: var(--text-secondary);
+    font-size: 15px;
+    line-height: 1.85;
+    max-width: 600px;
+    margin-bottom: 16px;
+}
+
+.btn-stream-poetic {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--text-pure);
+    font-family: var(--font-serif-en);
+    font-size: 16px;
+    font-style: italic;
+    letter-spacing: 1.5px;
+    text-decoration: none;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--c-jade);
+    width: fit-content;
+    transition: var(--transition);
+}
+
+.btn-stream-poetic:hover {
     color: var(--c-jade);
     padding-left: 8px;
 }
 
 /* ==========================================================================
-   5. FOOTER (MUSEUM CATALOG COLOPHON)
+   5. MUSEUM LIGHTBOX INSPECTOR
    ========================================================================== */
-footer {
-    padding: 68px 0;
-    background: var(--bg-void);
-    color: var(--text-muted);
-    font-size: 13px;
+.inspector-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s var(--ease-human);
 }
 
-.footer-spread {
+.inspector-modal.is-active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.inspector-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(4, 5, 7, 0.96);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+}
+
+.inspector-dialog {
+    position: relative;
+    z-index: 10;
+    max-width: 1120px;
+    width: 90vw;
+    max-height: 88vh;
+    display: grid;
+    grid-template-columns: 1.25fr 0.75fr;
+    gap: 48px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    padding: 36px 44px;
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.95);
+    overflow-y: auto;
+    align-items: center;
+    transform: scale(0.96) translate3d(0, 16px, 0);
+    transition: transform 0.4s var(--ease-human);
+}
+
+.inspector-modal.is-active .inspector-dialog {
+    transform: scale(1) translate3d(0, 0, 0);
+}
+
+.inspector-img-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    min-height: 380px;
+    max-height: 74vh;
+}
+
+.inspector-img-box img {
+    max-width: 100%;
+    max-height: 72vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: var(--radius-sm);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7);
+    border: 1px solid var(--border-light);
+    display: block;
+}
+
+.inspector-info-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px;
+}
+
+.inspector-close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 20;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.inspector-close-btn:hover {
+    border-color: var(--c-jade);
+    color: var(--c-jade);
+    background: var(--bg-surface);
+    transform: scale(1.08);
+}
+
+.inspector-tag {
+    font-family: var(--font-serif-en);
+    font-size: 13px;
+    font-style: italic;
+    color: var(--c-pink);
+    letter-spacing: 1px;
+}
+
+.inspector-title {
+    font-family: var(--font-kanji);
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--text-pure);
+    line-height: 1.25;
+}
+
+.inspector-caption {
+    color: var(--text-secondary);
+    font-size: 14px;
+    line-height: 1.85;
+}
+
+/* ==========================================================================
+   6. EPILOGUE (COLOPHON)
+   ========================================================================== */
+.tribute-footer {
+    padding: 80px 0;
+    background: var(--bg-void);
+    border-top: 1px solid var(--border);
+    position: relative;
+    z-index: 10;
+}
+
+.footer-inner-spread {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.footer-nav {
+.footer-whisper-text {
+    font-family: var(--font-serif-en);
+    font-style: italic;
+    font-size: 15px;
+    color: var(--text-muted);
+}
+
+.footer-whisper-links {
     display: flex;
     gap: 32px;
 }
 
-.footer-nav a {
+.footer-whisper-links a {
     color: var(--text-secondary);
     text-decoration: none;
-    font-size: 13px;
-    font-weight: 600;
+    font-family: var(--font-serif-en);
+    font-style: italic;
+    font-size: 15px;
     transition: color 0.2s ease;
 }
 
-.footer-nav a:hover {
+.footer-whisper-links a:hover {
     color: var(--c-jade);
 }
 
 /* ==========================================================================
-   RESPONSIVE (COLLAPSE ENGINE)
+   RESPONSIVE
    ========================================================================== */
 @media (max-width: 1024px) {
-    .hero-header {
+    .monograph-nav {
         padding: 24px;
     }
 
-    .hero-main-content {
+    .hero-poetic-stage {
         padding: 0 24px;
     }
 
-    .hero-metric-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .dossier-grid {
-        grid-template-columns: 1fr;
-        gap: 48px;
-    }
-
-    .dossier-section, .lookbook-section, .vinyl-section, footer {
-        padding: 80px 0;
-    }
-
-    .spread-row-left, .spread-row-right, .spread-panorama, .vinyl-spread {
+    .memoir-spread, .gallery-feature-card, .music-stage-spread {
         grid-template-columns: 1fr;
         gap: 40px;
     }
 
-    .vinyl-sleeve {
+    .act-memoir-section, .act-gallery-section, .act-music-section, .tribute-footer {
+        padding: 80px 0;
+    }
+
+    .inspector-dialog {
+        grid-template-columns: 1fr;
+        padding: 28px;
+        gap: 24px;
+    }
+
+    .inspector-img-box {
+        max-height: 50vh;
+    }
+
+    .music-sleeve-frame {
         max-width: 280px;
     }
 }
 
 @media (max-width: 640px) {
-    .hero-monumental-h1 {
+    .hero-name-monument {
         font-size: 42px;
     }
 
-    .hero-nav-links {
+    .monograph-nav-list {
         display: none;
     }
 
-    .hero-metric-grid {
+    .gallery-vignette-pair {
         grid-template-columns: 1fr;
+        gap: 40px;
     }
 
-    .hero-metric-item {
-        border-right: none;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    .footer-spread {
+    .footer-inner-spread {
         flex-direction: column;
         gap: 20px;
         text-align: center;
