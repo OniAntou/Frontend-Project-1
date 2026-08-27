@@ -472,137 +472,55 @@ body[data-atmosphere="gothic"] .hero-bg-img {
 }
 
 /* ==========================================================================
-   2. SECTION 01: THE MEMORY OF JADE (INTERACTIVE TIME RELIQUARY MATRIX)
+   2. SECTION 01: THE MEMORY OF JADE (PURE HUMAN EDITORIAL MONOGRAPH)
    ========================================================================== */
 .section-memory {
-    padding: 140px 0;
+    padding: 130px 0;
     border-bottom: 1px solid var(--border);
     background: var(--bg-surface);
     scroll-margin-top: 40px;
     position: relative;
-    overflow: hidden;
     transition: background-color 0.5s ease;
 }
 
-.memory-pavilion-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 24px;
+.section-heading-group {
     margin-bottom: 56px;
-    position: relative;
-    z-index: 2;
 }
 
-.memory-title-wrap {
-    position: relative;
-}
-
-.memory-watermark {
-    position: absolute;
-    top: -45px;
-    left: -20px;
-    font-family: var(--font-kanji);
-    font-size: 130px;
-    font-weight: 900;
-    color: rgba(255, 255, 255, 0.025);
-    line-height: 1;
-    pointer-events: none;
-    z-index: 0;
-    user-select: none;
-}
-
-body[data-atmosphere="gothic"] .memory-watermark {
-    color: rgba(181, 104, 255, 0.035);
+.section-kicker {
+    font-family: var(--font-serif-en);
+    font-size: 16px;
+    font-style: italic;
+    color: var(--c-pink);
+    display: block;
+    margin-bottom: 6px;
+    letter-spacing: 1px;
 }
 
 .section-heading-h2 {
     font-family: var(--font-kanji);
-    font-size: clamp(26px, 3.6vw, 42px);
+    font-size: clamp(28px, 3.8vw, 42px);
     font-weight: 800;
     color: var(--text-pure);
     letter-spacing: 1.5px;
     line-height: 1.25;
 }
 
-/* Interactive Epoch Switcher Pills */
-.epoch-switcher {
-    display: flex;
-    gap: 8px;
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid var(--border-light);
-    border-radius: 40px;
-    padding: 4px 6px;
-}
-
-.epoch-pill {
-    background: transparent;
-    border: none;
-    border-radius: 30px;
-    padding: 6px 14px;
-    font-family: var(--font-serif-en);
-    font-size: 14px;
-    color: var(--text-secondary);
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    transition: var(--transition);
-}
-
-.epoch-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--text-muted);
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.epoch-num {
-    font-family: var(--font-display);
-    font-size: 11px;
-    font-weight: 800;
-    color: var(--c-jade);
-    opacity: 0.8;
-}
-
-.epoch-pill:hover {
-    color: var(--text-pure);
-    background: rgba(255, 255, 255, 0.04);
-}
-
-.epoch-pill.is-active {
-    background: var(--c-jade-dim);
-    color: var(--text-pure);
-    border: 1px solid rgba(var(--c-jade-rgb), 0.4);
-    box-shadow: 0 0 12px var(--c-jade-dim);
-}
-
-.epoch-pill.is-active .epoch-dot {
-    background: var(--c-jade);
-    transform: scale(1.4);
-    box-shadow: 0 0 8px var(--c-jade);
-}
-
-/* Reliquary Stage Layout */
-.reliquary-stage {
+.memory-monograph-spread {
     display: grid;
-    grid-template-columns: 0.95fr 1.05fr;
-    gap: 60px;
-    align-items: start;
-    position: relative;
-    z-index: 2;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 64px;
+    align-items: center;
 }
 
-/* Left: Monumental 3D Relic Showcase Frame */
-.reliquary-visual-side {
+/* Left: Museum Art Plate */
+.memory-monograph-figure {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 14px;
 }
 
-.reliquary-card {
+.memory-canvas-frame {
     width: 100%;
     aspect-ratio: 4 / 4.8;
     border-radius: var(--radius-card);
@@ -610,242 +528,126 @@ body[data-atmosphere="gothic"] .memory-watermark {
     position: relative;
     border: 1px solid var(--border);
     background: var(--bg-void);
-    box-shadow: 0 32px 80px rgba(0, 0, 0, 0.9), 0 0 30px rgba(var(--c-jade-rgb), 0.08);
-    display: flex;
-    flex-direction: column;
+    box-shadow: 0 28px 70px rgba(0, 0, 0, 0.85);
     padding: 0;
     cursor: pointer;
     text-align: left;
+    display: block;
 }
 
-.reliquary-badge-tag {
-    position: absolute;
-    top: 16px;
-    left: 16px;
-    background: rgba(5, 6, 8, 0.9);
-    border: 1px solid var(--border-light);
-    border-radius: var(--radius-sm);
-    padding: 4px 10px;
-    font-family: var(--font-display);
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: 1.5px;
-    color: var(--c-pink);
-    backdrop-filter: blur(8px);
-    z-index: 5;
-    transition: color 0.4s ease;
-}
-
-.reliquary-img-wrap {
-    flex: 1;
-    position: relative;
-    overflow: hidden;
+.memory-canvas-img {
     width: 100%;
     height: 100%;
+    position: relative;
+    overflow: hidden;
 }
 
-.reliquary-img-wrap img {
+.memory-canvas-img img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center 15%;
-    transition: transform 0.8s var(--ease-human), opacity 0.35s ease;
+    transition: transform 0.8s var(--ease-human);
 }
 
-.reliquary-card:hover .reliquary-img-wrap img {
+.memory-canvas-frame:hover .memory-canvas-img img {
     transform: scale(1.03);
 }
 
-.reliquary-footer-bar {
-    padding: 14px 22px;
-    background: rgba(5, 6, 8, 0.94);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border-top: 1px solid var(--border);
+.memory-canvas-caption {
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-family: var(--font-serif-en);
-    width: 100%;
-}
-
-.reliquary-footer-title {
     font-size: 15px;
-    color: var(--text-primary);
+    padding: 4px 2px;
 }
 
-.reliquary-footer-action {
-    font-size: 14px;
+.plate-index {
+    font-family: var(--font-display);
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--c-jade);
+    letter-spacing: 1.5px;
+}
+
+.plate-title {
+    color: var(--text-secondary);
     font-style: italic;
+}
+
+.plate-action {
+    color: var(--text-muted);
+    font-style: italic;
+    font-size: 14px;
+    transition: color 0.2s ease;
+}
+
+.memory-canvas-frame:hover + .memory-canvas-caption .plate-action {
     color: var(--c-jade);
 }
 
-/* HUD Dossier Stats Bar */
-.reliquary-hud-bar {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    padding: 12px 16px;
-}
-
-.hud-stat {
+/* Right: Human Literary Essay & Calligraphy */
+.memory-essay-side {
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 24px;
 }
 
-.hud-label {
-    font-family: var(--font-display);
-    font-size: 10px;
-    font-weight: 800;
-    color: var(--c-pink);
-    letter-spacing: 1px;
-}
-
-.hud-val {
-    font-family: var(--font-serif-en);
-    font-size: 13px;
+.memory-lead-text {
     color: var(--text-primary);
-    line-height: 1.35;
-    transition: opacity 0.3s ease;
+    font-size: 16px;
+    line-height: 1.95;
 }
 
-/* Right: Dynamic Reliquary Narrative & Soul Synthesizer */
-.reliquary-narrative-side {
-    display: flex;
-    flex-direction: column;
-    gap: 28px;
+.memory-dropcap {
+    float: left;
+    font-family: var(--font-display);
+    font-size: 54px;
+    line-height: 0.82;
+    padding-top: 4px;
+    padding-right: 14px;
+    padding-bottom: 2px;
+    color: var(--c-jade);
+    font-weight: 900;
 }
 
-.reliquary-quote-box {
-    background: rgba(0, 229, 153, 0.04);
+.memory-quote-block {
+    background: rgba(0, 229, 153, 0.035);
     border-left: 3px solid var(--c-jade);
-    padding: 22px 28px;
+    padding: 20px 24px;
     border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    transition: border-color 0.4s ease;
+    gap: 6px;
 }
 
-body[data-atmosphere="gothic"] .reliquary-quote-box {
-    background: rgba(181, 104, 255, 0.05);
+body[data-atmosphere="gothic"] .memory-quote-block {
+    background: rgba(181, 104, 255, 0.045);
 }
 
-.reliquary-quote-jp {
+.quote-jp {
     font-family: var(--font-kanji);
-    font-size: clamp(20px, 2.2vw, 24px);
-    font-weight: 800;
+    font-size: clamp(18px, 2vw, 22px);
+    font-weight: 700;
     color: var(--text-pure);
-    line-height: 1.4;
-    transition: opacity 0.35s ease;
+    line-height: 1.45;
 }
 
-.reliquary-quote-en {
-    font-family: var(--font-serif-en);
-    font-size: 16px;
-    font-style: italic;
-    color: var(--c-pink);
-    transition: opacity 0.35s ease;
-}
-
-.reliquary-chapter-wrap {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.reliquary-chapter-sub {
+.quote-en {
     font-family: var(--font-serif-en);
     font-size: 15px;
     font-style: italic;
-    color: var(--c-jade);
+    color: var(--c-pink);
 }
 
-.reliquary-chapter-title {
-    font-family: var(--font-kanji);
-    font-size: clamp(24px, 3vw, 32px);
-    font-weight: 800;
-    color: var(--text-pure);
-    line-height: 1.25;
-}
-
-.reliquary-chapter-prose {
+.memory-body-text {
     color: var(--text-secondary);
     font-size: 15px;
     line-height: 1.9;
-    transition: opacity 0.35s ease;
 }
 
-/* Interactive Soul Resonance Frequency Trigger */
-.soul-synthesizer-box {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-card);
-    padding: 18px 24px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    transition: var(--transition);
-}
-
-.soul-synthesizer-box:hover {
-    border-color: var(--c-jade);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px var(--c-jade-dim);
-}
-
-.synth-waveform-display {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    height: 24px;
-}
-
-.resonate-btn {
-    background: var(--c-jade-dim);
-    border: 1px solid var(--c-jade);
-    color: var(--text-pure);
-    padding: 8px 18px;
-    border-radius: 30px;
-    font-family: var(--font-serif-en);
-    font-size: 15px;
-    font-style: italic;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    transition: var(--transition);
-}
-
-.btn-sparkle {
-    color: var(--c-jade);
-    font-size: 14px;
-    animation: kanjiSoulBreath 2s ease-in-out infinite;
-}
-
-.resonate-btn:hover {
-    background: var(--c-jade);
-    color: var(--bg-void);
-    transform: scale(1.05);
-    box-shadow: 0 0 16px var(--c-jade);
-}
-
-.resonate-btn:hover .btn-sparkle {
-    color: var(--bg-void);
-}
-
-.synth-hint {
-    font-family: var(--font-serif-en);
-    font-size: 13px;
-    font-style: italic;
-    color: var(--text-muted);
-}
-
-.memory-dedication-bar {
+.memory-dedication {
     font-size: 14px;
     color: var(--text-muted);
     font-family: var(--font-serif-en);
@@ -1381,14 +1183,9 @@ body[data-atmosphere="gothic"] .reliquary-quote-box {
         padding: 20px 24px;
     }
 
-    .reliquary-stage {
+    .memory-monograph-spread, .music-spread {
         grid-template-columns: 1fr;
         gap: 48px;
-    }
-
-    .music-spread {
-        grid-template-columns: 1fr;
-        gap: 40px;
     }
 
     .monolith-stage {
@@ -1415,21 +1212,6 @@ body[data-atmosphere="gothic"] .reliquary-quote-box {
 }
 
 @media (max-width: 768px) {
-    .epoch-switcher {
-        flex-wrap: wrap;
-    }
-
-    .reliquary-hud-bar {
-        grid-template-columns: 1fr;
-        gap: 8px;
-    }
-
-    .soul-synthesizer-box {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
-    }
-
     .monolith-stage {
         flex-direction: column;
         height: auto;
