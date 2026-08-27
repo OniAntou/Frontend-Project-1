@@ -194,19 +194,26 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // =========================================================================
-    // 5. ARCHITECTURAL MONOGRAPH PAGINATION & SCROLL PROGRESS
+    // 5. ARCHITECTURAL FOLIO SPINE SCROLL & PROGRESS SYNC
     // =========================================================================
-    const railNodes = document.querySelectorAll('.rail-node');
-    const progressBar = document.getElementById('rail-progress-bar');
+    const spineTicks = document.querySelectorAll('.spine-tick');
+    const spineProgressFill = document.getElementById('spine-progress-fill');
+    const spinePercent = document.getElementById('spine-percent');
     const sections = document.querySelectorAll('header.hero-stage, section');
 
-    function updateMonographRail() {
+    function updateFolioSpine() {
         const scrollTop = window.scrollY || document.documentElement.scrollTop;
         const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-        const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        const rawPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        const clampedPercent = Math.min(Math.max(rawPercent, 0), 100);
 
-        if (progressBar) {
-            progressBar.style.height = `${scrollPercent}%`;
+        if (spineProgressFill) {
+            spineProgressFill.style.height = `${clampedPercent}%`;
+        }
+
+        if (spinePercent) {
+            const formatted = Math.round(clampedPercent).toString().padStart(2, '0');
+            spinePercent.textContent = `${formatted}%`;
         }
 
         let currentSectionId = 'prologue';
@@ -217,15 +224,15 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        railNodes.forEach(node => {
-            if (node.getAttribute('data-section') === currentSectionId) {
-                node.classList.add('is-active');
+        spineTicks.forEach(tick => {
+            if (tick.getAttribute('data-section') === currentSectionId) {
+                tick.classList.add('is-active');
             } else {
-                node.classList.remove('is-active');
+                tick.classList.remove('is-active');
             }
         });
     }
 
-    window.addEventListener('scroll', updateMonographRail, { passive: true });
-    updateMonographRail();
+    window.addEventListener('scroll', updateFolioSpine, { passive: true });
+    updateFolioSpine();
 });

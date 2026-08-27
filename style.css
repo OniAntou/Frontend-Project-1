@@ -159,53 +159,66 @@ a:focus-visible, button:focus-visible {
 }
 
 /* ==========================================================================
-   FIXED ARCHITECTURAL MONOGRAPH PAGINATION RAIL
+   BESPOKE JAPANESE ARCHITECTURAL FOLIO SPINE (Flush Edge Ruler)
    ========================================================================== */
-.monograph-rail {
+.folio-edge-spine {
     position: fixed;
-    right: 28px;
-    top: 50%;
-    transform: translateY(-50%);
+    right: 0;
+    top: 0;
+    width: 48px;
+    height: 100vh;
     z-index: 100;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
-    gap: 16px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 36px 0;
+    border-left: 1px solid var(--border-light);
+    background: rgba(7, 9, 13, 0.45);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     pointer-events: auto;
+    user-select: none;
+    transition: var(--transition);
 }
 
-.rail-header {
+.spine-top-tag {
     font-family: var(--font-display);
     font-size: 9px;
     font-weight: 800;
-    letter-spacing: 2.5px;
+    letter-spacing: 2px;
     color: var(--text-muted);
-    padding-right: 4px;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
 }
 
-.rail-track {
+.spine-ruler-track {
     position: relative;
+    height: 50vh;
     display: flex;
     flex-direction: column;
-    gap: 22px;
-    padding: 10px 0;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
 }
 
-.rail-track::before {
-    content: '';
+.spine-hairline {
     position: absolute;
     top: 0;
-    right: 5px;
+    left: 50%;
+    transform: translateX(-50%);
     width: 1px;
     height: 100%;
-    background: var(--border-light);
+    background: rgba(255, 255, 255, 0.08);
     z-index: 1;
 }
 
-.rail-progress-bar {
+.spine-progress-fill {
     position: absolute;
     top: 0;
-    right: 5px;
+    left: 50%;
+    transform: translateX(-50%);
     width: 1.5px;
     height: 0%;
     background: var(--c-jade);
@@ -213,78 +226,88 @@ a:focus-visible, button:focus-visible {
     transition: height 0.15s ease-out;
 }
 
-.rail-node {
+.spine-tick {
     position: relative;
     z-index: 3;
     display: flex;
     align-items: center;
-    gap: 12px;
+    justify-content: center;
+    width: 100%;
+    height: 36px;
     text-decoration: none;
     cursor: pointer;
-    padding-right: 0;
 }
 
-.rail-node-label {
+.spine-tick-notch {
+    position: absolute;
+    left: 0;
+    width: 6px;
+    height: 1px;
+    background: var(--border-light);
+    transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+.spine-tick-num {
     font-family: var(--font-display);
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 700;
-    letter-spacing: 1px;
     color: var(--text-muted);
-    opacity: 0;
-    transform: translateX(6px);
-    transition: opacity 0.3s ease, transform 0.3s ease, color 0.3s ease;
-    white-space: nowrap;
-    pointer-events: none;
-}
-
-.rail-node-dot {
-    width: 11px;
-    height: 11px;
-    border-radius: 50%;
+    letter-spacing: 1px;
+    transition: color 0.3s ease, transform 0.3s ease;
     background: var(--bg-void);
-    border: 1px solid var(--border-light);
-    display: block;
-    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+    padding: 2px 4px;
+    border-radius: 2px;
 }
 
-.rail-node:hover .rail-node-label,
-.rail-node.is-active .rail-node-label {
-    opacity: 1;
-    transform: translateX(0);
+.spine-tick:hover .spine-tick-notch {
+    width: 12px;
+    background: var(--text-pure);
 }
 
-.rail-node:hover .rail-node-label {
-    color: var(--text-primary);
+.spine-tick:hover .spine-tick-num {
+    color: var(--text-pure);
+    transform: scale(1.1);
 }
 
-.rail-node.is-active .rail-node-label {
-    color: var(--c-jade);
-    font-weight: 800;
-}
-
-.rail-node:hover .rail-node-dot {
-    border-color: var(--text-pure);
-    transform: scale(1.2);
-}
-
-.rail-node.is-active .rail-node-dot {
+.spine-tick.is-active .spine-tick-notch {
+    width: 16px;
     background: var(--c-jade);
-    border-color: var(--c-jade);
+}
+
+.spine-tick.is-active .spine-tick-num {
+    color: var(--c-jade);
+    font-weight: 900;
     transform: scale(1.15);
 }
 
-.rail-coords {
+.spine-bottom-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.spine-percent {
+    font-family: var(--font-display);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: var(--c-jade);
+}
+
+.spine-code {
     font-family: var(--font-serif-en);
-    font-size: 11px;
+    font-size: 10px;
     font-style: italic;
-    letter-spacing: 0.5px;
+    letter-spacing: 1px;
     color: var(--text-muted);
-    padding-right: 4px;
-    white-space: nowrap;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
 }
 
 @media (max-width: 1200px) {
-    .monograph-rail {
+    .folio-edge-spine {
         display: none;
     }
 }
