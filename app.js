@@ -192,47 +192,4 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         revealElements.forEach(el => el.classList.add('is-revealed'));
     }
-
-    // =========================================================================
-    // 5. ARCHITECTURAL FOLIO SPINE SCROLL & PROGRESS SYNC
-    // =========================================================================
-    const spineTicks = document.querySelectorAll('.spine-tick');
-    const spineProgressFill = document.getElementById('spine-progress-fill');
-    const spinePercent = document.getElementById('spine-percent');
-    const sections = document.querySelectorAll('header.hero-stage, section');
-
-    function updateFolioSpine() {
-        const scrollTop = window.scrollY || document.documentElement.scrollTop;
-        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-        const rawPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-        const clampedPercent = Math.min(Math.max(rawPercent, 0), 100);
-
-        if (spineProgressFill) {
-            spineProgressFill.style.height = `${clampedPercent}%`;
-        }
-
-        if (spinePercent) {
-            const formatted = Math.round(clampedPercent).toString().padStart(2, '0');
-            spinePercent.textContent = `${formatted}%`;
-        }
-
-        let currentSectionId = 'prologue';
-        sections.forEach(section => {
-            const rect = section.getBoundingClientRect();
-            if (rect.top <= window.innerHeight * 0.45 && rect.bottom >= window.innerHeight * 0.2) {
-                currentSectionId = section.id;
-            }
-        });
-
-        spineTicks.forEach(tick => {
-            if (tick.getAttribute('data-section') === currentSectionId) {
-                tick.classList.add('is-active');
-            } else {
-                tick.classList.remove('is-active');
-            }
-        });
-    }
-
-    window.addEventListener('scroll', updateFolioSpine, { passive: true });
-    updateFolioSpine();
 });
