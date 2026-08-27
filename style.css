@@ -1,64 +1,62 @@
 /* ==========================================================================
    URUHA RUSHIA - ART EXHIBITION MONOGRAPH
-   Pure Human Graphic Design • Silky 60fps Motion Engine • Haute Art Pavilion
+   Pure Human Fine Art Editorial • Zero AI Neon Glows • Museum Exhibition Grade
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Noto+Serif+JP:wght@400;600;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Shippori+Mincho:wght@500;700;800;900&display=swap');
 
 :root {
-    --bg-void: #050608;
-    --bg-surface: #0A0D12;
-    --bg-card: #0F131A;
+    --bg-void: #07090D;
+    --bg-surface: #0E1218;
+    --bg-card: #131922;
 
-    --c-jade: #00E599;
-    --c-jade-light: #5CFFD4;
-    --c-jade-dim: rgba(0, 229, 153, 0.12);
-    --c-jade-rgb: 0, 229, 153;
-    --c-pink: #FFA3B8;
+    --c-jade: #00D285;
+    --c-jade-dim: rgba(0, 210, 133, 0.08);
+    --c-jade-rgb: 0, 210, 133;
+    --c-pink: #F472B6;
 
     --text-pure: #FFFFFF;
     --text-primary: #F0F3F6;
     --text-secondary: #9DAAB8;
     --text-muted: #64748B;
 
-    --border: #161F2B;
-    --border-light: rgba(255, 255, 255, 0.08);
+    --border: #1B2330;
+    --border-light: rgba(255, 255, 255, 0.09);
 
     --font-serif-en: 'Cormorant Garamond', serif;
     --font-display: 'Cinzel', serif;
     --font-kanji: 'Shippori Mincho', 'Noto Serif JP', serif;
     --font-body: 'Plus Jakarta Sans', sans-serif;
 
-    --radius-card: 6px;
+    --radius-card: 4px;
     --radius-sm: 2px;
     --ease-human: cubic-bezier(0.16, 1, 0.3, 1);
-    --transition: transform 0.4s var(--ease-human), opacity 0.4s var(--ease-human), border-color 0.3s ease, box-shadow 0.4s var(--ease-human), background-color 0.5s ease, color 0.5s ease;
+    --transition: transform 0.4s var(--ease-human), opacity 0.4s var(--ease-human), border-color 0.25s ease, box-shadow 0.3s ease, background-color 0.4s ease, color 0.3s ease;
 }
 
 /* ==========================================================================
    ATMOSPHERE THEME: GOTHIC ECLIPSE
    ========================================================================== */
 body[data-atmosphere="gothic"] {
-    --bg-void: #06040A;
-    --bg-surface: #0B0813;
-    --bg-card: #120D1D;
+    --bg-void: #09070D;
+    --bg-surface: #100D18;
+    --bg-card: #161220;
 
-    --c-jade: #B568FF;
-    --c-jade-light: #DC9BFF;
-    --c-jade-dim: rgba(181, 104, 255, 0.15);
-    --c-jade-rgb: 181, 104, 255;
-    --c-pink: #E85D88;
+    --c-jade: #A855F7;
+    --c-jade-dim: rgba(168, 85, 247, 0.08);
+    --c-jade-rgb: 168, 85, 247;
+    --c-pink: #EC4899;
 
     --text-primary: #EDE8F5;
     --text-secondary: #9B8EA6;
-    --text-muted: #5D5069;
+    --text-muted: #6B5E77;
 
-    --border: #1E152D;
-    --border-light: rgba(255, 255, 255, 0.08);
+    --border: #221A30;
+    --border-light: rgba(255, 255, 255, 0.09);
 }
 
 body[data-atmosphere="gothic"] .hero-bg-img {
-    filter: brightness(0.48) contrast(1.2) hue-rotate(240deg);
+    filter: brightness(0.48) contrast(1.15) hue-rotate(240deg);
 }
 
 /* Global Reset */
@@ -111,17 +109,6 @@ a:focus-visible, button:focus-visible {
     }
 }
 
-@keyframes kanjiSoulBreath {
-    0%, 100% {
-        text-shadow: 0 2px 20px rgba(var(--c-jade-rgb), 0.3);
-        opacity: 0.92;
-    }
-    50% {
-        text-shadow: 0 2px 36px rgba(var(--c-jade-rgb), 0.75), 0 0 16px rgba(var(--c-jade-rgb), 0.5);
-        opacity: 1;
-    }
-}
-
 @keyframes fadeUpStagger {
     0% {
         opacity: 0;
@@ -156,7 +143,7 @@ a:focus-visible, button:focus-visible {
 }
 
 /* ==========================================================================
-   1. HERO STAGE (PURE EDITORIAL ARTISTRY)
+   1. HERO STAGE (PURE EDITORIAL FINE ART)
    ========================================================================== */
 .hero-stage {
     min-height: 100dvh;
@@ -184,16 +171,12 @@ a:focus-visible, button:focus-visible {
     height: 100%;
     object-fit: cover;
     object-position: center 25%;
-    filter: brightness(0.58) contrast(1.12);
+    filter: brightness(0.55) contrast(1.1);
     animation: heroBackdropDrift 24s ease-in-out infinite alternate;
     transform: translateZ(0);
     will-change: transform;
     backface-visibility: hidden;
     transition: filter 0.6s ease;
-}
-
-body[data-atmosphere="gothic"] .hero-bg-img {
-    filter: brightness(0.48) contrast(1.2) hue-rotate(240deg);
 }
 
 .hero-vignette {
@@ -202,10 +185,8 @@ body[data-atmosphere="gothic"] .hero-bg-img {
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at 60% 40%, rgba(5, 6, 8, 0.15) 0%, rgba(5, 6, 8, 0.72) 65%, var(--bg-void) 100%),
-                linear-gradient(to bottom, rgba(5, 6, 8, 0.82) 0%, transparent 30%, transparent 60%, var(--bg-void) 100%);
+    background: linear-gradient(to bottom, rgba(7, 9, 13, 0.45) 0%, rgba(7, 9, 13, 0.2) 40%, rgba(7, 9, 13, 0.95) 100%);
     pointer-events: none;
-    transition: background 0.6s var(--ease-human);
 }
 
 /* Header Navigation */
@@ -290,8 +271,7 @@ body[data-atmosphere="gothic"] .hero-bg-img {
 
 .atmosphere-btn:hover {
     border-color: var(--c-jade);
-    background: var(--c-jade-dim);
-    transform: scale(1.03);
+    background: rgba(255, 255, 255, 0.05);
 }
 
 /* Main Hero Narrative */
@@ -322,7 +302,6 @@ body[data-atmosphere="gothic"] .hero-bg-img {
     letter-spacing: 2px;
     color: var(--text-pure);
     margin-bottom: 6px;
-    text-shadow: 0 4px 40px rgba(0, 0, 0, 0.9);
     animation: fadeUpStagger 1s var(--ease-human) 0.4s both;
 }
 
@@ -334,7 +313,7 @@ body[data-atmosphere="gothic"] .hero-bg-img {
     letter-spacing: 6px;
     margin-bottom: 24px;
     display: block;
-    animation: fadeUpStagger 1s var(--ease-human) 0.5s both, kanjiSoulBreath 4s ease-in-out infinite;
+    animation: fadeUpStagger 1s var(--ease-human) 0.5s both;
 }
 
 .hero-quote {
@@ -345,7 +324,6 @@ body[data-atmosphere="gothic"] .hero-bg-img {
     max-width: 680px;
     margin-bottom: 20px;
     line-height: 1.65;
-    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.9);
     animation: fadeUpStagger 1.1s var(--ease-human) 0.6s both;
 }
 
@@ -386,9 +364,7 @@ body[data-atmosphere="gothic"] .hero-bg-img {
     z-index: 10;
     padding: 22px 48px;
     border-top: 1px solid var(--border-light);
-    background: rgba(5, 6, 8, 0.92);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    background: rgba(7, 9, 13, 0.94);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -408,7 +384,7 @@ body[data-atmosphere="gothic"] .hero-bg-img {
 }
 
 /* ==========================================================================
-   INTERACTIVE 3D PERSPECTIVE ART CARDS & HOLOGRAPHIC SHEEN
+   INTERACTIVE 3D PERSPECTIVE ART CARDS
    ========================================================================== */
 .art-perspective-card {
     position: relative;
@@ -416,16 +392,16 @@ body[data-atmosphere="gothic"] .hero-bg-img {
     overflow: hidden;
     border: 1px solid var(--border);
     background: var(--bg-surface);
-    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.75);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
     transform-style: preserve-3d;
     transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1);
-    transition: box-shadow 0.4s ease, border-color 0.4s ease;
+    transition: box-shadow 0.35s ease, border-color 0.25s ease;
     will-change: transform;
 }
 
 .art-perspective-card:hover {
     border-color: var(--c-jade);
-    box-shadow: 0 32px 90px rgba(0, 0, 0, 0.9), 0 0 30px var(--c-jade-dim);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.85);
 }
 
 .art-perspective-card img {
@@ -438,25 +414,7 @@ body[data-atmosphere="gothic"] .hero-bg-img {
 }
 
 .art-perspective-card:hover img {
-    transform: scale(1.03);
-}
-
-/* Interactive Dynamic Holographic Sheen Following Cursor */
-.art-sheen {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.15) 0%, rgba(var(--c-jade-rgb), 0.08) 35%, transparent 70%);
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.35s ease;
-    mix-blend-mode: screen;
-}
-
-.art-perspective-card:hover .art-sheen {
-    opacity: 1;
+    transform: scale(1.025);
 }
 
 /* ==========================================================================
@@ -551,7 +509,7 @@ body[data-atmosphere="gothic"] .hero-bg-img {
     position: relative;
     border: 1px solid var(--border);
     background: var(--bg-void);
-    box-shadow: 0 32px 80px rgba(0, 0, 0, 0.9), 0 0 30px rgba(var(--c-jade-rgb), 0.08);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.8);
     padding: 0;
     cursor: pointer;
     text-align: left;
@@ -574,25 +532,23 @@ body[data-atmosphere="gothic"] .hero-bg-img {
 }
 
 .memory-canvas-frame:hover .memory-canvas-inner img {
-    transform: scale(1.03);
+    transform: scale(1.025);
 }
 
 /* Floating Overlapping Japanese Calligraphy Seal */
 .memory-floating-seal {
     position: absolute;
-    bottom: -18px;
-    right: -18px;
-    background: rgba(5, 6, 8, 0.92);
-    border: 1px solid rgba(var(--c-jade-rgb), 0.4);
+    bottom: -16px;
+    right: -16px;
+    background: #0B0E14;
+    border: 1px solid var(--border-light);
     border-radius: var(--radius-sm);
     padding: 12px 18px;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 2px;
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.8), 0 0 20px var(--c-jade-dim);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.7);
     z-index: 5;
     pointer-events: none;
 }
@@ -678,17 +634,14 @@ body[data-atmosphere="gothic"] .hero-bg-img {
 }
 
 .editorial-quote-stage {
-    background: rgba(0, 229, 153, 0.035);
+    background: #0B0E14;
+    border: 1px solid var(--border);
     border-left: 3px solid var(--c-jade);
     padding: 22px 28px;
     border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
     display: flex;
     flex-direction: column;
     gap: 6px;
-}
-
-body[data-atmosphere="gothic"] .editorial-quote-stage {
-    background: rgba(181, 104, 255, 0.045);
 }
 
 .quote-kanji-text {
@@ -717,7 +670,7 @@ body[data-atmosphere="gothic"] .editorial-quote-stage {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 16px;
-    background: rgba(255, 255, 255, 0.02);
+    background: #0B0E14;
     border: 1px solid var(--border);
     border-radius: var(--radius-sm);
     padding: 16px 20px;
@@ -789,17 +742,17 @@ body[data-atmosphere="gothic"] .editorial-quote-stage {
     overflow: hidden;
     cursor: pointer;
     background: var(--bg-surface);
-    transition: flex 0.65s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+    transition: flex 0.65s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.35s ease;
 }
 
 .monolith-slab:hover {
-    border-color: rgba(var(--c-jade-rgb), 0.4);
+    border-color: rgba(255, 255, 255, 0.2);
 }
 
 .monolith-slab.is-active {
     flex: 3.8;
     border-color: var(--c-jade);
-    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.95), 0 0 30px var(--c-jade-dim);
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.85);
     cursor: default;
 }
 
@@ -825,7 +778,7 @@ body[data-atmosphere="gothic"] .editorial-quote-stage {
 
 .monolith-slab.is-active .monolith-bg-wrap img {
     filter: brightness(0.85) contrast(1.08);
-    transform: scale(1.03);
+    transform: scale(1.025);
 }
 
 .monolith-gradient-overlay {
@@ -834,8 +787,7 @@ body[data-atmosphere="gothic"] .editorial-quote-stage {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to top, rgba(5, 6, 8, 0.96) 0%, rgba(5, 6, 8, 0.5) 45%, rgba(5, 6, 8, 0.1) 75%),
-                linear-gradient(to bottom, rgba(5, 6, 8, 0.7) 0%, transparent 35%);
+    background: linear-gradient(to top, rgba(7, 9, 13, 0.95) 0%, rgba(7, 9, 13, 0.35) 45%, transparent 80%);
     pointer-events: none;
 }
 
@@ -920,8 +872,8 @@ body[data-atmosphere="gothic"] .editorial-quote-stage {
 }
 
 .monolith-inspect-btn {
-    background: rgba(0, 229, 153, 0.08);
-    border: 1px solid var(--c-jade);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-light);
     color: var(--c-jade);
     padding: 6px 14px;
     font-family: var(--font-serif-en);
@@ -935,7 +887,8 @@ body[data-atmosphere="gothic"] .editorial-quote-stage {
 .monolith-inspect-btn:hover {
     background: var(--c-jade);
     color: var(--bg-void);
-    transform: scale(1.04);
+    border-color: var(--c-jade);
+    transform: scale(1.03);
 }
 
 .monolith-title-jp {
@@ -945,7 +898,6 @@ body[data-atmosphere="gothic"] .editorial-quote-stage {
     color: var(--text-pure);
     margin-bottom: 12px;
     line-height: 1.2;
-    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.9);
 }
 
 .monolith-desc {
@@ -953,7 +905,6 @@ body[data-atmosphere="gothic"] .editorial-quote-stage {
     font-size: 15px;
     line-height: 1.85;
     max-width: 680px;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
 }
 
 /* ==========================================================================
@@ -1010,7 +961,7 @@ body[data-atmosphere="gothic"] .editorial-quote-stage {
     overflow: hidden;
     border: 1px solid var(--border);
     background: var(--bg-void);
-    box-shadow: 0 28px 70px rgba(0, 0, 0, 0.9);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.85);
 }
 
 .vinyl-jacket-sleeve img {
@@ -1027,9 +978,9 @@ body[data-atmosphere="gothic"] .editorial-quote-stage {
     width: 90%;
     height: 90%;
     border-radius: 50%;
-    background: radial-gradient(circle, #1a1a1a 0%, #0d0d0d 60%, #050505 100%);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.95);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: #111419;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1042,8 +993,7 @@ body[data-atmosphere="gothic"] .editorial-quote-stage {
     width: 75%;
     height: 75%;
     border-radius: 50%;
-    border: 1px dashed rgba(255, 255, 255, 0.06);
-    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8), 0 0 0 10px rgba(0, 0, 0, 0.3);
+    border: 1px dashed rgba(255, 255, 255, 0.08);
 }
 
 .vinyl-center-label {
@@ -1126,7 +1076,8 @@ body[data-atmosphere="gothic"] .editorial-quote-stage {
 }
 
 .music-lyrics-card {
-    background: rgba(255, 163, 184, 0.04);
+    background: #0B0E14;
+    border: 1px solid var(--border);
     border-left: 3px solid var(--c-pink);
     padding: 20px 24px;
     border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
@@ -1252,9 +1203,9 @@ body[data-atmosphere="gothic"] .editorial-quote-stage {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(5, 6, 8, 0.96);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
+    background: rgba(7, 9, 13, 0.96);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
 }
 
 .inspector-dialog {
@@ -1270,10 +1221,10 @@ body[data-atmosphere="gothic"] .editorial-quote-stage {
     border: 1px solid var(--border);
     border-radius: var(--radius-card);
     padding: 36px 44px;
-    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.95);
+    box-shadow: 0 32px 80px rgba(0, 0, 0, 0.95);
     overflow-y: auto;
     align-items: center;
-    transform: scale(0.96) translate3d(0, 16px, 0);
+    transform: scale(0.97) translate3d(0, 16px, 0);
     transition: transform 0.4s var(--ease-human);
 }
 

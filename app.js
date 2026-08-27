@@ -97,15 +97,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
 
-            // Compute percentage for holographic specular lighting
-            const percentX = (x / rect.width) * 100;
-            const percentY = (y / rect.height) * 100;
-            card.style.setProperty('--mouse-x', `${percentX}%`);
-            card.style.setProperty('--mouse-y', `${percentY}%`);
-
-            // Compute degrees (max ±6 deg)
-            targetRotateX = ((centerY - y) / centerY) * 6;
-            targetRotateY = ((x - centerX) / centerX) * 6;
+            // Compute degrees (max ±5 deg)
+            targetRotateX = ((centerY - y) / centerY) * 5;
+            targetRotateY = ((x - centerX) / centerX) * 5;
 
             isHovered = true;
             if (!animationFrameId) {
