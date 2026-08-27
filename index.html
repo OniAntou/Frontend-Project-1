@@ -70,7 +70,7 @@
     </header>
 
     <main>
-        <!-- 2. SECTION 01: THE MEMORY OF JADE -->
+        <!-- 2. SECTION 01: THE MEMORY OF JADE (INTERACTIVE TIME RELIQUARY) -->
         <section id="memory" class="section-memory">
             <div class="container">
                 <!-- Section Header with Monumental Watermark -->
@@ -79,68 +79,97 @@
                         <span class="memory-watermark" aria-hidden="true">記憶</span>
                         <h2 class="section-heading-h2">The Memory of Jade (翡翠の記憶)</h2>
                     </div>
-                    <p class="memory-stage-sub">A Chronicled Memoir • The Resonance of 2019–2022</p>
+
+                    <!-- Interactive Epoch Switcher Pills -->
+                    <div class="epoch-switcher" role="tablist" aria-label="Chronicle Epochs">
+                        <button type="button" class="epoch-pill is-active" data-epoch="0" role="tab" aria-selected="true">
+                            <span class="epoch-dot"></span>
+                            <span class="epoch-num">01</span>
+                            <span class="epoch-label">2019 • Genesis</span>
+                        </button>
+                        <button type="button" class="epoch-pill" data-epoch="1" role="tab" aria-selected="false">
+                            <span class="epoch-dot"></span>
+                            <span class="epoch-num">02</span>
+                            <span class="epoch-label">2020 • Resonance</span>
+                        </button>
+                        <button type="button" class="epoch-pill" data-epoch="2" role="tab" aria-selected="false">
+                            <span class="epoch-dot"></span>
+                            <span class="epoch-num">03</span>
+                            <span class="epoch-label">2021–2022 • Eternity</span>
+                        </button>
+                    </div>
                 </div>
 
-                <div class="memory-pavilion-grid">
-                    <!-- Leftmost: Silk Vertical Calligraphy Ribbon -->
-                    <div class="memory-vertical-ribbon reveal-on-scroll" aria-hidden="true">
-                        <span class="ribbon-year">2019</span>
-                        <span class="ribbon-kanji">永遠の愛と感謝・翡翠の魂</span>
-                        <span class="ribbon-year">2022</span>
-                    </div>
-
-                    <!-- Center: Monumental Art Plate with 3D Tilt -->
-                    <div class="memory-art-monument reveal-on-scroll">
-                        <button type="button" class="memory-monument-card art-click-frame art-inspect-trigger art-perspective-card"
+                <div class="reliquary-stage reveal-on-scroll">
+                    <!-- Left: Monumental 3D Relic Showcase Frame -->
+                    <div class="reliquary-visual-side">
+                        <button type="button" class="reliquary-card art-click-frame art-inspect-trigger art-perspective-card" id="reliquary-card-trigger"
                                 data-art-src="assets/images/fanart_emerald_clean.png"
                                 data-art-title="Emerald Gaze (翡翠の眼差し)"
                                 data-art-caption="High-resolution close-up portrait highlighting Uruha Rushia's gentle crimson gaze, jade ribbons, and signature butterfly motifs."
-                                data-art-tag="Master Portrait • 2700px">
-                            <div class="monument-seal-tag">01 / CHRONICLE</div>
-                            <div class="monument-img-frame">
-                                <img src="assets/images/fanart_emerald_clean.png" alt="Uruha Rushia Emerald Gaze Master Portrait" />
+                                data-art-tag="Epoch 01 • Genesis (2019)">
+                            <div class="reliquary-badge-tag" id="reliquary-badge-tag">EPOCH 01 // 2019.08</div>
+                            <div class="reliquary-img-wrap">
+                                <img src="assets/images/fanart_emerald_clean.png" alt="Uruha Rushia Reliquary Artwork" id="reliquary-main-img" />
                                 <div class="art-sheen"></div>
                             </div>
-                            <div class="monument-footer-bar">
-                                <span class="monument-caption">Portrait in Emerald</span>
-                                <span class="monument-inspect-btn">[ View 4K ⤢ ]</span>
+                            <div class="reliquary-footer-bar">
+                                <span class="reliquary-footer-title" id="reliquary-footer-title">Portrait in Emerald</span>
+                                <span class="reliquary-footer-action">[ View 4K Artwork ⤢ ]</span>
                             </div>
                         </button>
+
+                        <!-- HUD Dossier Stats Bar -->
+                        <div class="reliquary-hud-bar">
+                            <div class="hud-stat">
+                                <span class="hud-label">CHRONICLE ERA</span>
+                                <span class="hud-val" id="hud-era-val">2019.08 • Debut</span>
+                            </div>
+                            <div class="hud-stat">
+                                <span class="hud-label">SIGNATURE ESSENCE</span>
+                                <span class="hud-val" id="hud-essence-val">Soul Butterflies & ASMR</span>
+                            </div>
+                            <div class="hud-stat">
+                                <span class="hud-label">RESONANCE IMPACT</span>
+                                <span class="hud-val" id="hud-impact-val">Genesis of Fandead</span>
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- Right: Monograph Narrative & Resonance Chronicle Triad -->
-                    <div class="memory-pavilion-narrative reveal-on-scroll">
-                        <!-- Monumental Quote Banner -->
-                        <div class="monograph-quote-stage">
-                            <p class="quote-kanji-monument">「こんるし〜！今日もいっぱい愛してるよ！」</p>
-                            <p class="quote-en-monument">“Across countless twilight streams, a solitary voice resonated into the hearts of millions.”</p>
+                    <!-- Right: Dynamic Reliquary Narrative & Soul Synthesizer -->
+                    <div class="reliquary-narrative-side">
+                        <!-- Dynamic Quote Stage -->
+                        <div class="reliquary-quote-box">
+                            <p class="reliquary-quote-jp" id="reliquary-quote-jp">「こんるし〜！今日もいっぱい愛してるよ！」</p>
+                            <p class="reliquary-quote-en" id="reliquary-quote-en">“Across countless twilight streams, a solitary voice resonated into the hearts of millions.”</p>
                         </div>
 
-                        <!-- Monograph Body Prose -->
-                        <p class="monograph-prose">
-                            <span class="monograph-dropcap">S</span>he stepped across the veil of the Netherworld in the summer of 2019 — a soft-spoken maiden trying her best to understand the human heart. What began as quiet whisper streams evolved into one of the most passionate, profound, and unforgettable cultural connections in virtual entertainment history.
-                        </p>
+                        <!-- Narrative Chapter Title & Prose -->
+                        <div class="reliquary-chapter-wrap">
+                            <div class="reliquary-chapter-sub" id="reliquary-chapter-sub">Chapter 01 • The Awakening</div>
+                            <h3 class="reliquary-chapter-title" id="reliquary-chapter-title">Genesis of the Soul (魂の目覚め)</h3>
+                            <p class="reliquary-chapter-prose" id="reliquary-chapter-prose">
+                                She stepped across the veil of the Netherworld in the summer of 2019 — a soft-spoken maiden trying her best to understand the human heart. What began as quiet whisper streams evolved into one of the most passionate, profound, and unforgettable cultural connections in virtual history.
+                            </p>
+                        </div>
 
-                        <!-- Chronicle Triad Cards -->
-                        <div class="chronicle-triad-grid">
-                            <div class="chronicle-card">
-                                <span class="chronicle-phase">I. The Whispers</span>
-                                <h4 class="chronicle-title">Binaural Serenity (癒やしの囁き)</h4>
-                                <p class="chronicle-body">Nighttime ASMR streams that provided unconditional solace to weary souls.</p>
+                        <!-- Interactive Soul Resonance Frequency Trigger -->
+                        <div class="soul-synthesizer-box">
+                            <div class="synth-waveform-display" aria-hidden="true">
+                                <div class="wave-bar"></div>
+                                <div class="wave-bar"></div>
+                                <div class="wave-bar"></div>
+                                <div class="wave-bar"></div>
+                                <div class="wave-bar"></div>
+                                <div class="wave-bar"></div>
+                                <div class="wave-bar"></div>
+                                <div class="wave-bar"></div>
                             </div>
-
-                            <div class="chronicle-card">
-                                <span class="chronicle-phase">II. The Passion</span>
-                                <h4 class="chronicle-title">Rage & Metal (咆哮の伝説)</h4>
-                                <p class="chronicle-body">Explosive death-metal shrieks and desk-slam comedy that united fans worldwide.</p>
-                            </div>
-
-                            <div class="chronicle-card">
-                                <span class="chronicle-phase">III. The Devotion</span>
-                                <h4 class="chronicle-title">Fandead Bond (ふぁんでっど)</h4>
-                                <p class="chronicle-body">An unbreakable promise of eternal love and shared gratitude across time.</p>
-                            </div>
+                            <button type="button" class="resonate-btn" id="resonate-trigger-btn" aria-label="Trigger Soul Resonance Frequency">
+                                <span class="btn-sparkle">✦</span>
+                                <span>Resonate Soul Wave</span>
+                            </button>
+                            <span class="synth-hint" id="synth-hint-text">Click to synthesize celestial chime & light</span>
                         </div>
 
                         <div class="memory-dedication-bar">

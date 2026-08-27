@@ -38,6 +38,196 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // =========================================================================
+    // 0.5. SECTION 01: INTERACTIVE TIME RELIQUARY MATRIX ENGINE
+    // =========================================================================
+    const epochPills = document.querySelectorAll('.epoch-pill');
+    const reliquaryMainImg = document.getElementById('reliquary-main-img');
+    const reliquaryCardTrigger = document.getElementById('reliquary-card-trigger');
+    const reliquaryBadgeTag = document.getElementById('reliquary-badge-tag');
+    const reliquaryFooterTitle = document.getElementById('reliquary-footer-title');
+    const hudEraVal = document.getElementById('hud-era-val');
+    const hudEssenceVal = document.getElementById('hud-essence-val');
+    const hudImpactVal = document.getElementById('hud-impact-val');
+    const reliquaryQuoteJp = document.getElementById('reliquary-quote-jp');
+    const reliquaryQuoteEn = document.getElementById('reliquary-quote-en');
+    const reliquaryChapterSub = document.getElementById('reliquary-chapter-sub');
+    const reliquaryChapterTitle = document.getElementById('reliquary-chapter-title');
+    const reliquaryChapterProse = document.getElementById('reliquary-chapter-prose');
+
+    const EPOCH_DATA = [
+        {
+            src: 'assets/images/fanart_emerald_clean.png',
+            badge: 'EPOCH 01 // 2019.08',
+            title: 'Emerald Gaze (翡翠の眼差し)',
+            caption: 'High-resolution close-up portrait highlighting Uruha Rushia\'s gentle crimson gaze, jade ribbons, and signature butterfly motifs.',
+            tag: 'Epoch 01 • Genesis (2019)',
+            footerTitle: 'Portrait in Emerald',
+            eraVal: '2019.08 • Debut',
+            essenceVal: 'Soul Butterflies & ASMR',
+            impactVal: 'Genesis of Fandead',
+            quoteJp: '「こんるし〜！今日もいっぱい愛してるよ！」',
+            quoteEn: '“Across countless twilight streams, a solitary voice resonated into the hearts of millions.”',
+            chapterSub: 'Chapter 01 • The Awakening',
+            chapterTitle: 'Genesis of the Soul (魂の目覚め)',
+            chapterProse: 'She stepped across the veil of the Netherworld in the summer of 2019 — a soft-spoken maiden trying her best to understand the human heart. What began as quiet whisper streams evolved into one of the most passionate, profound, and unforgettable cultural connections in virtual history.'
+        },
+        {
+            src: 'assets/images/night_train.jpg',
+            badge: 'EPOCH 02 // 2020.10',
+            title: 'Midnight Railway (銀河夜行列車)',
+            caption: 'Poetic illustration of Rushia embarking on a midnight starry locomotive through the celestial galaxy, accompanied by glowing soul butterflies.',
+            tag: 'Epoch 02 • Resonance (2020)',
+            footerTitle: 'Midnight Railway 1080p',
+            eraVal: '2020.10 • Golden Era',
+            essenceVal: 'Desk-slams & Screams',
+            impactVal: '1,000,000+ Fandead',
+            quoteJp: '「ふぁんでっど、ずっとずっと一緒だよ！」',
+            quoteEn: '“A roaring storm of pure passion, laughter, and unbreakable devotion.”',
+            chapterSub: 'Chapter 02 • The Golden Resonance',
+            chapterTitle: 'Folklore of Screams & Solace (咆哮と癒やし)',
+            chapterProse: 'From whisper-soft binaural ASMR streams that brought peace to hundreds of thousands of restless nights, to her iconic, earth-shaking metal shrieks and desk-slams that became legendary global folklore, Rushia poured every ounce of her soul into her audience.'
+        },
+        {
+            src: 'assets/images/hero_wide_4k_butterfly.jpg',
+            badge: 'EPOCH 03 // 2021–2022',
+            title: 'Butterfly Realm (翡翠の蝶域)',
+            caption: 'Monumental 4K masterwork capturing Uruha Rushia immersed in a mystical realm of glowing emerald butterflies and eternal starlight.',
+            tag: 'Epoch 03 • Eternity (2021–2022)',
+            footerTitle: 'Butterfly Realm 4K',
+            eraVal: '2021–2022 • Eternal',
+            essenceVal: 'Iris & Celestial Flight',
+            impactVal: '1.6M+ Global Souls',
+            quoteJp: '「心の中で、翡翠の蝶は舞い続ける。」',
+            quoteEn: '“In the heart of every Fandead, the emerald butterfly dances forever.”',
+            chapterSub: 'Chapter 03 • The Eternal Star',
+            chapterTitle: 'Eternal Starlight & Legacy (不滅の輝き)',
+            chapterProse: 'A legacy etched forever in digital history. Though times shift, the emerald butterfly never truly leaves. Her memory remains an eternal beacon of joy, love, and unwavering passion in the virtual sky.'
+        }
+    ];
+
+    function switchEpoch(index) {
+        const data = EPOCH_DATA[index];
+        if (!data) return;
+
+        epochPills.forEach((p, idx) => {
+            if (idx === index) {
+                p.classList.add('is-active');
+                p.setAttribute('aria-selected', 'true');
+            } else {
+                p.classList.remove('is-active');
+                p.setAttribute('aria-selected', 'false');
+            }
+        });
+
+        if (reliquaryMainImg) {
+            reliquaryMainImg.style.opacity = '0';
+            setTimeout(() => {
+                reliquaryMainImg.src = data.src;
+                reliquaryMainImg.style.opacity = '1';
+            }, 180);
+        }
+
+        if (reliquaryCardTrigger) {
+            reliquaryCardTrigger.setAttribute('data-art-src', data.src);
+            reliquaryCardTrigger.setAttribute('data-art-title', data.title);
+            reliquaryCardTrigger.setAttribute('data-art-caption', data.caption);
+            reliquaryCardTrigger.setAttribute('data-art-tag', data.tag);
+        }
+
+        if (reliquaryBadgeTag) reliquaryBadgeTag.textContent = data.badge;
+        if (reliquaryFooterTitle) reliquaryFooterTitle.textContent = data.footerTitle;
+        if (hudEraVal) hudEraVal.textContent = data.eraVal;
+        if (hudEssenceVal) hudEssenceVal.textContent = data.essenceVal;
+        if (hudImpactVal) hudImpactVal.textContent = data.impactVal;
+
+        if (reliquaryQuoteJp) {
+            reliquaryQuoteJp.style.opacity = '0';
+            setTimeout(() => {
+                reliquaryQuoteJp.textContent = data.quoteJp;
+                reliquaryQuoteJp.style.opacity = '1';
+            }, 180);
+        }
+
+        if (reliquaryQuoteEn) {
+            reliquaryQuoteEn.style.opacity = '0';
+            setTimeout(() => {
+                reliquaryQuoteEn.textContent = data.quoteEn;
+                reliquaryQuoteEn.style.opacity = '1';
+            }, 180);
+        }
+
+        if (reliquaryChapterSub) reliquaryChapterSub.textContent = data.chapterSub;
+        if (reliquaryChapterTitle) reliquaryChapterTitle.textContent = data.chapterTitle;
+
+        if (reliquaryChapterProse) {
+            reliquaryChapterProse.style.opacity = '0';
+            setTimeout(() => {
+                reliquaryChapterProse.textContent = data.chapterProse;
+                reliquaryChapterProse.style.opacity = '1';
+            }, 180);
+        }
+    }
+
+    epochPills.forEach((pill) => {
+        pill.addEventListener('click', () => {
+            const idx = parseInt(pill.getAttribute('data-epoch') || '0', 10);
+            switchEpoch(idx);
+        });
+    });
+
+    // Web Audio API Celestial Chime Synthesizer
+    const resonateBtn = document.getElementById('resonate-trigger-btn');
+    let audioCtx = null;
+
+    if (resonateBtn) {
+        resonateBtn.addEventListener('click', () => {
+            try {
+                if (!audioCtx) {
+                    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                }
+                if (audioCtx.state === 'suspended') {
+                    audioCtx.resume();
+                }
+
+                // Play delicate angelic chime notes (E6, G#6, B6, E7)
+                const now = audioCtx.currentTime;
+                const freqs = [1318.51, 1661.22, 1975.53, 2637.02];
+
+                freqs.forEach((freq, idx) => {
+                    const osc = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(freq, now + idx * 0.08);
+
+                    gain.gain.setValueAtTime(0.0001, now + idx * 0.08);
+                    gain.gain.exponentialRampToValueAtTime(0.08, now + idx * 0.08 + 0.03);
+                    gain.gain.exponentialRampToValueAtTime(0.0001, now + idx * 0.08 + 1.2);
+
+                    osc.connect(gain);
+                    gain.connect(audioCtx.destination);
+
+                    osc.start(now + idx * 0.08);
+                    osc.stop(now + idx * 0.08 + 1.3);
+                });
+
+                // Spawn sparkling butterfly soul particles on canvas
+                const canvas = document.getElementById('soul-canvas');
+                if (canvas && window.spawnResonanceBurst) {
+                    window.spawnResonanceBurst();
+                }
+
+                resonateBtn.style.transform = 'scale(0.96)';
+                setTimeout(() => {
+                    resonateBtn.style.transform = '';
+                }, 150);
+            } catch (err) {
+                console.log('Audio playback info:', err);
+            }
+        });
+    }
+
+    // =========================================================================
     // 1. LUMINOUS SOUL CURSOR PARTICLE ENGINE (120FPS HARDWARE ACCELERATED)
     // =========================================================================
     const canvas = document.getElementById('soul-canvas');
@@ -112,6 +302,27 @@ document.addEventListener('DOMContentLoaded', () => {
                 ctx.shadowBlur = 8;
                 ctx.fill();
             }
+
+            window.spawnResonanceBurst = function() {
+                const centerX = window.innerWidth / 2;
+                const centerY = window.innerHeight / 2;
+                const rgb = getThemeColorRGB();
+
+                for (let i = 0; i < 36; i++) {
+                    const angle = (i / 36) * Math.PI * 2;
+                    const speed = Math.random() * 4 + 2;
+                    particles.push({
+                        x: centerX,
+                        y: centerY,
+                        vx: Math.cos(angle) * speed,
+                        vy: Math.sin(angle) * speed - 1,
+                        radius: Math.random() * 3 + 1.5,
+                        life: 1.2,
+                        decay: Math.random() * 0.015 + 0.01,
+                        color: Math.random() > 0.4 ? rgb : '255, 163, 184'
+                    });
+                }
+            };
 
             requestAnimationFrame(animateParticles);
         }
