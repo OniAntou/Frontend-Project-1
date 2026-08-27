@@ -101,18 +101,6 @@ a:focus-visible, button:focus-visible {
     padding: 0 40px;
 }
 
-/* Canvas Particle Layer */
-#soul-canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    pointer-events: none;
-    z-index: 999;
-    transform: translateZ(0);
-}
-
 /* Keyframe Animations */
 @keyframes heroBackdropDrift {
     0% {

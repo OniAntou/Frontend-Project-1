@@ -38,110 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // =========================================================================
-    // 1. LUMINOUS SOUL CURSOR PARTICLE ENGINE (120FPS HARDWARE ACCELERATED)
-    // =========================================================================
-    const canvas = document.getElementById('soul-canvas');
-    if (canvas) {
-        const ctx = canvas.getContext('2d', { alpha: true });
-        let particles = [];
-        let width = (canvas.width = window.innerWidth);
-        let height = (canvas.height = window.innerHeight);
-
-        let mouseX = width / 2;
-        let mouseY = height / 2;
-        let prevMouseX = mouseX;
-        let prevMouseY = mouseY;
-        let isMoving = false;
-        let idleTimer = null;
-
-        window.addEventListener('resize', () => {
-            width = canvas.width = window.innerWidth;
-            height = canvas.height = window.innerHeight;
-        }, { passive: true });
-
-        window.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-
-            const speed = Math.hypot(mouseX - prevMouseX, mouseY - prevMouseY);
-            prevMouseX = mouseX;
-            prevMouseY = mouseY;
-
-            // Spawn particles based on movement
-            const spawnCount = Math.min(Math.floor(speed / 4) + 1, 4);
-            const rgb = getThemeColorRGB();
-
-            for (let i = 0; i < spawnCount; i++) {
-                particles.push({
-                    x: mouseX + (Math.random() - 0.5) * 12,
-                    y: mouseY + (Math.random() - 0.5) * 12,
-                    vx: (Math.random() - 0.5) * 1.4,
-                    vy: -Math.random() * 1.2 - 0.4,
-                    radius: Math.random() * 2.2 + 0.8,
-                    life: 1.0,
-                    decay: Math.random() * 0.025 + 0.015,
-                    color: Math.random() > 0.35 ? rgb : '255, 163, 184' // Jade/Purple or Sakura Pink
-                });
-            }
-
-            isMoving = true;
-            clearTimeout(idleTimer);
-            idleTimer = setTimeout(() => {
-                isMoving = false;
-            }, 300);
-        }, { passive: true });
-
-        function animateParticles() {
-            ctx.clearRect(0, 0, width, height);
-
-            for (let i = particles.length - 1; i >= 0; i--) {
-                const p = particles[i];
-                p.x += p.vx;
-                p.y += p.vy;
-                p.life -= p.decay;
-
-                if (p.life <= 0) {
-                    particles.splice(i, 1);
-                    continue;
-                }
-
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, p.radius * p.life, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(${p.color}, ${p.life * 0.75})`;
-                ctx.shadowColor = `rgba(${p.color}, 0.8)`;
-                ctx.shadowBlur = 8;
-                ctx.fill();
-            }
-
-            window.spawnResonanceBurst = function() {
-                const centerX = window.innerWidth / 2;
-                const centerY = window.innerHeight / 2;
-                const rgb = getThemeColorRGB();
-
-                for (let i = 0; i < 36; i++) {
-                    const angle = (i / 36) * Math.PI * 2;
-                    const speed = Math.random() * 4 + 2;
-                    particles.push({
-                        x: centerX,
-                        y: centerY,
-                        vx: Math.cos(angle) * speed,
-                        vy: Math.sin(angle) * speed - 1,
-                        radius: Math.random() * 3 + 1.5,
-                        life: 1.2,
-                        decay: Math.random() * 0.015 + 0.01,
-                        color: Math.random() > 0.4 ? rgb : '255, 163, 184'
-                    });
-                }
-            };
-
-            requestAnimationFrame(animateParticles);
-        }
-
-        animateParticles();
-    }
-
-    // =========================================================================
-    // 2. HAUTE COUTURE MONOLITH STAGE SWITCHER
+    // 1. HAUTE COUTURE MONOLITH STAGE SWITCHER
     // =========================================================================
     const slabs = document.querySelectorAll('.monolith-slab');
     slabs.forEach(slab => {
@@ -161,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // =========================================================================
-    // 3. TACTILE 3D PERSPECTIVE CARD TILT WITH HOLOGRAPHIC LIGHTING
+    // 2. TACTILE 3D PERSPECTIVE CARD TILT WITH HOLOGRAPHIC LIGHTING
     // =========================================================================
     const tiltCards = document.querySelectorAll('.art-perspective-card');
 
