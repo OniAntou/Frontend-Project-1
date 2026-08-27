@@ -5,7 +5,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     // =========================================================================
-    // 0. ATMOSPHERE THEME SWITCHER WITH HORIZONTAL BEAM SWEEP
+    // 0. ATMOSPHERE THEME SWITCHER WITH SYNCHRONIZED WHITE BAR WIPE
     // =========================================================================
     const atmosphereBtn = document.getElementById('atmosphere-toggle');
     const atmosphereLabel = document.getElementById('atmosphere-label');
@@ -18,6 +18,18 @@ document.addEventListener('DOMContentLoaded', () => {
         if (atmosphereLabel) atmosphereLabel.textContent = '☾ Gothic Eclipse';
     }
 
+    function applyThemeSwitch(nextTheme) {
+        if (nextTheme === 'gothic') {
+            document.body.setAttribute('data-atmosphere', 'gothic');
+            localStorage.setItem('rushia-atmosphere', 'gothic');
+            if (atmosphereLabel) atmosphereLabel.textContent = '☾ Gothic Eclipse';
+        } else {
+            document.body.removeAttribute('data-atmosphere');
+            localStorage.setItem('rushia-atmosphere', 'emerald');
+            if (atmosphereLabel) atmosphereLabel.textContent = '✦ Emerald Dawn';
+        }
+    }
+
     if (atmosphereBtn) {
         atmosphereBtn.addEventListener('click', () => {
             if (isThemeTransitioning) return;
@@ -26,41 +38,29 @@ document.addEventListener('DOMContentLoaded', () => {
             const isCurrentGothic = document.body.getAttribute('data-atmosphere') === 'gothic';
             const nextTheme = isCurrentGothic ? 'emerald' : 'gothic';
 
+            // Start white bar sweep
             if (themeBeamRunner) {
-                // Reset animation
                 themeBeamRunner.classList.remove('is-sweeping');
                 void themeBeamRunner.offsetWidth; // Force reflow
                 themeBeamRunner.classList.add('is-sweeping');
+            }
 
-                // Switch theme precisely at midpoint (300ms) as white bar crosses the screen center
-                setTimeout(() => {
-                    if (nextTheme === 'gothic') {
-                        document.body.setAttribute('data-atmosphere', 'gothic');
-                        localStorage.setItem('rushia-atmosphere', 'gothic');
-                        if (atmosphereLabel) atmosphereLabel.textContent = '☾ Gothic Eclipse';
-                    } else {
-                        document.body.removeAttribute('data-atmosphere');
-                        localStorage.setItem('rushia-atmosphere', 'emerald');
-                        if (atmosphereLabel) atmosphereLabel.textContent = '✦ Emerald Dawn';
-                    }
-                }, 300);
+            if (document.startViewTransition) {
+                const transition = document.startViewTransition(() => {
+                    applyThemeSwitch(nextTheme);
+                });
 
-                // Clear after sweep completes (600ms)
+                transition.finished.finally(() => {
+                    if (themeBeamRunner) themeBeamRunner.classList.remove('is-sweeping');
+                    isThemeTransitioning = false;
+                });
+            } else {
+                // Fallback for browsers without View Transitions API
+                setTimeout(() => applyThemeSwitch(nextTheme), 300);
                 setTimeout(() => {
-                    themeBeamRunner.classList.remove('is-sweeping');
+                    if (themeBeamRunner) themeBeamRunner.classList.remove('is-sweeping');
                     isThemeTransitioning = false;
                 }, 600);
-            } else {
-                if (nextTheme === 'gothic') {
-                    document.body.setAttribute('data-atmosphere', 'gothic');
-                    localStorage.setItem('rushia-atmosphere', 'gothic');
-                    if (atmosphereLabel) atmosphereLabel.textContent = '☾ Gothic Eclipse';
-                } else {
-                    document.body.removeAttribute('data-atmosphere');
-                    localStorage.setItem('rushia-atmosphere', 'emerald');
-                    if (atmosphereLabel) atmosphereLabel.textContent = '✦ Emerald Dawn';
-                }
-                isThemeTransitioning = false;
             }
         });
     }
