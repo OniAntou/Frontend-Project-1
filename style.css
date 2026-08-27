@@ -931,7 +931,7 @@ a:focus-visible, button:focus-visible {
 
 .music-spatial-grid {
     display: grid;
-    grid-template-columns: 420px 1fr;
+    grid-template-columns: 460px 1fr;
     gap: 72px;
     align-items: center;
 }
@@ -947,21 +947,23 @@ a:focus-visible, button:focus-visible {
 .vinyl-display-unit {
     position: relative;
     width: 100%;
-    aspect-ratio: 1 / 1;
-    border-radius: var(--radius-card);
+    height: 340px;
+    display: flex;
+    align-items: center;
     overflow: visible !important;
 }
 
 .vinyl-jacket-sleeve {
     position: relative;
     z-index: 5;
-    width: 100%;
-    height: 100%;
+    width: 320px;
+    height: 320px;
     border-radius: var(--radius-card);
     overflow: hidden;
     border: 1px solid var(--border);
     background: var(--bg-void);
-    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.85);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85);
+    flex-shrink: 0;
 }
 
 .vinyl-jacket-sleeve img {
@@ -971,54 +973,89 @@ a:focus-visible, button:focus-visible {
     display: block;
 }
 
+/* Authentic Protruding Vinyl Record Disc */
 .vinyl-record-disc {
     position: absolute;
-    top: 5%;
-    right: 5%;
-    width: 90%;
-    height: 90%;
+    top: 10px;
+    left: 110px;
+    width: 300px;
+    height: 300px;
     border-radius: 50%;
-    background: #111419;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: radial-gradient(circle at center, #1b2029 0%, #0d0f14 60%, #06070a 100%);
+    box-shadow: 12px 16px 40px rgba(0, 0, 0, 0.9), inset 0 0 0 2px rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 2;
-    transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), left 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, left;
 }
 
-.vinyl-grooves {
+.vinyl-groove-ring {
     position: absolute;
-    width: 75%;
-    height: 75%;
     border-radius: 50%;
-    border: 1px dashed rgba(255, 255, 255, 0.08);
+    pointer-events: none;
+}
+
+.vinyl-groove-ring.ring-1 {
+    width: 82%;
+    height: 82%;
+    border: 1px dashed rgba(255, 255, 255, 0.07);
+}
+
+.vinyl-groove-ring.ring-2 {
+    width: 64%;
+    height: 64%;
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .vinyl-center-label {
-    width: 32%;
-    height: 32%;
+    width: 36%;
+    height: 36%;
     border-radius: 50%;
     background: var(--c-jade);
-    border: 2px solid var(--text-pure);
+    border: 2px solid rgba(255, 255, 255, 0.3);
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     position: relative;
     z-index: 3;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.35);
 }
 
-.vinyl-label-text {
+.vinyl-label-title {
     font-family: var(--font-display);
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 900;
-    letter-spacing: 1px;
-    color: var(--bg-void);
+    letter-spacing: 1.5px;
+    color: #07090D;
+    line-height: 1;
 }
 
-.vinyl-display-unit:hover .vinyl-record-disc {
-    transform: translate3d(55px, -15px, 0) rotate(90deg);
+.vinyl-label-sub {
+    font-family: var(--font-serif-en);
+    font-size: 9px;
+    font-weight: 700;
+    font-style: italic;
+    color: rgba(7, 9, 13, 0.8);
+    margin-top: 2px;
+}
+
+.vinyl-spindle-hole {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #07090D;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    margin-top: 4px;
+}
+
+/* Interaction: hover pulls disc out further and spins */
+.vinyl-jacket-trigger:hover .vinyl-record-disc {
+    left: 155px;
+    transform: rotate(180deg);
 }
 
 .vinyl-caption-bar {
@@ -1400,11 +1437,35 @@ a:focus-visible, button:focus-visible {
     }
 
     .music-vinyl-stage {
-        max-width: 320px;
+        max-width: 480px;
     }
 }
 
 @media (max-width: 768px) {
+    .music-vinyl-stage {
+        max-width: 380px;
+    }
+
+    .vinyl-display-unit {
+        height: 280px;
+    }
+
+    .vinyl-jacket-sleeve {
+        width: 240px;
+        height: 240px;
+    }
+
+    .vinyl-record-disc {
+        width: 230px;
+        height: 230px;
+        left: 80px;
+        top: 5px;
+    }
+
+    .vinyl-jacket-trigger:hover .vinyl-record-disc {
+        left: 110px;
+    }
+
     .editorial-legend-strip {
         grid-template-columns: 1fr;
         gap: 12px;
