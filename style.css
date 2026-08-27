@@ -929,19 +929,45 @@ a:focus-visible, button:focus-visible {
     border-bottom: 1px solid var(--border-light);
 }
 
+button {
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    text-align: inherit;
+}
+
 .music-spatial-grid {
     display: grid;
-    grid-template-columns: 460px 1fr;
-    gap: 72px;
+    grid-template-columns: 480px 1fr;
+    gap: 64px;
     align-items: center;
 }
 
-/* Interactive Vinyl Jacket & Sliding Record Disc */
+/* ==========================================================================
+   COLLECTOR'S VINYL EXHIBITION STAGE
+   ========================================================================== */
 .music-vinyl-stage {
     display: flex;
     flex-direction: column;
     gap: 16px;
     width: 100%;
+    position: relative;
+}
+
+.vinyl-jacket-trigger {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: block;
+    width: 100%;
+    cursor: pointer;
+    outline: none !important;
 }
 
 .vinyl-display-unit {
@@ -953,17 +979,19 @@ a:focus-visible, button:focus-visible {
     overflow: visible !important;
 }
 
+/* Album Jacket Sleeve (Front layer) */
 .vinyl-jacket-sleeve {
     position: relative;
-    z-index: 5;
+    z-index: 10;
     width: 320px;
     height: 320px;
     border-radius: var(--radius-card);
     overflow: hidden;
     border: 1px solid var(--border);
     background: var(--bg-void);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.9);
     flex-shrink: 0;
+    transition: transform 0.6s var(--ease-human), box-shadow 0.4s ease;
 }
 
 .vinyl-jacket-sleeve img {
@@ -971,25 +999,37 @@ a:focus-visible, button:focus-visible {
     height: 100%;
     object-fit: cover;
     display: block;
+    transition: transform 0.6s var(--ease-human);
 }
 
-/* Authentic Protruding Vinyl Record Disc */
+.vinyl-jacket-trigger:hover .vinyl-jacket-sleeve {
+    box-shadow: 0 28px 70px rgba(0, 0, 0, 0.95);
+}
+
+.vinyl-jacket-trigger:hover .vinyl-jacket-sleeve img {
+    transform: scale(1.02);
+}
+
+/* Authentic Protruding Vinyl Record Disc (Behind Sleeve, Sticking Out) */
 .vinyl-record-disc {
     position: absolute;
     top: 10px;
-    left: 110px;
+    left: 140px;
     width: 300px;
     height: 300px;
     border-radius: 50%;
-    background: radial-gradient(circle at center, #1b2029 0%, #0d0f14 60%, #06070a 100%);
-    box-shadow: 12px 16px 40px rgba(0, 0, 0, 0.9), inset 0 0 0 2px rgba(255, 255, 255, 0.05);
+    background: 
+        conic-gradient(from 45deg, rgba(255, 255, 255, 0.05) 0deg, transparent 45deg, rgba(255, 255, 255, 0.05) 90deg, transparent 135deg, rgba(255, 255, 255, 0.05) 180deg, transparent 225deg, rgba(255, 255, 255, 0.05) 270deg, transparent 315deg, rgba(255, 255, 255, 0.05) 360deg),
+        repeating-radial-gradient(circle at center, #0F1218 0, #0F1218 2px, #161A22 3px, #0F1218 4px);
+    box-shadow: 14px 18px 45px rgba(0, 0, 0, 0.95), inset 0 0 0 1px rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.12);
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 2;
+    z-index: 5;
     transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), left 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: transform, left;
+    pointer-events: none;
 }
 
 .vinyl-groove-ring {
@@ -999,37 +1039,42 @@ a:focus-visible, button:focus-visible {
 }
 
 .vinyl-groove-ring.ring-1 {
-    width: 82%;
-    height: 82%;
-    border: 1px dashed rgba(255, 255, 255, 0.07);
+    width: 84%;
+    height: 84%;
+    border: 1px dashed rgba(255, 255, 255, 0.08);
 }
 
 .vinyl-groove-ring.ring-2 {
-    width: 64%;
-    height: 64%;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    width: 66%;
+    height: 66%;
+    border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
+/* Center Paper Label */
 .vinyl-center-label {
-    width: 36%;
-    height: 36%;
+    width: 38%;
+    height: 38%;
     border-radius: 50%;
-    background: var(--c-jade);
-    border: 2px solid rgba(255, 255, 255, 0.3);
+    background: #00D285;
+    border: 3px solid #FFFFFF;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     position: relative;
-    z-index: 3;
-    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.35);
+    z-index: 6;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5), inset 0 0 8px rgba(0, 0, 0, 0.3);
+}
+
+body[data-atmosphere="gothic"] .vinyl-center-label {
+    background: #A855F7;
 }
 
 .vinyl-label-title {
     font-family: var(--font-display);
     font-size: 11px;
     font-weight: 900;
-    letter-spacing: 1.5px;
+    letter-spacing: 2px;
     color: #07090D;
     line-height: 1;
 }
@@ -1037,24 +1082,25 @@ a:focus-visible, button:focus-visible {
 .vinyl-label-sub {
     font-family: var(--font-serif-en);
     font-size: 9px;
-    font-weight: 700;
+    font-weight: 800;
     font-style: italic;
-    color: rgba(7, 9, 13, 0.8);
+    color: rgba(7, 9, 13, 0.85);
     margin-top: 2px;
 }
 
 .vinyl-spindle-hole {
-    width: 8px;
-    height: 8px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
     background: #07090D;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1.5px solid rgba(255, 255, 255, 0.4);
     margin-top: 4px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.9);
 }
 
 /* Interaction: hover pulls disc out further and spins */
 .vinyl-jacket-trigger:hover .vinyl-record-disc {
-    left: 155px;
+    left: 185px;
     transform: rotate(180deg);
 }
 
@@ -1065,6 +1111,7 @@ a:focus-visible, button:focus-visible {
     font-family: var(--font-serif-en);
     font-size: 14px;
     padding: 0 4px;
+    width: 320px;
 }
 
 .vinyl-speed-tag {
@@ -1458,12 +1505,16 @@ a:focus-visible, button:focus-visible {
     .vinyl-record-disc {
         width: 230px;
         height: 230px;
-        left: 80px;
+        left: 100px;
         top: 5px;
     }
 
     .vinyl-jacket-trigger:hover .vinyl-record-disc {
-        left: 110px;
+        left: 130px;
+    }
+
+    .vinyl-caption-bar {
+        width: 240px;
     }
 
     .editorial-legend-strip {
