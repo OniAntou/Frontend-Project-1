@@ -1010,24 +1010,35 @@ button {
     transform: scale(1.02);
 }
 
-/* Authentic Protruding Vinyl Record Disc (Behind Sleeve, Sticking Out) */
+/* Keyframe Spin Loop for Vinyl Record */
+@keyframes vinylSpinLoop {
+    from {
+        transform: translateY(-50%) rotate(0deg);
+    }
+    to {
+        transform: translateY(-50%) rotate(360deg);
+    }
+}
+
+/* Authentic Protruding Vinyl Record Disc (Behind Sleeve, Centered & Peeking Out) */
 .vinyl-record-disc {
     position: absolute;
-    top: 10px;
-    left: 140px;
+    top: 50%;
+    left: 85px;
     width: 300px;
     height: 300px;
     border-radius: 50%;
+    transform: translateY(-50%) rotate(0deg);
     background: 
         conic-gradient(from 45deg, rgba(255, 255, 255, 0.05) 0deg, transparent 45deg, rgba(255, 255, 255, 0.05) 90deg, transparent 135deg, rgba(255, 255, 255, 0.05) 180deg, transparent 225deg, rgba(255, 255, 255, 0.05) 270deg, transparent 315deg, rgba(255, 255, 255, 0.05) 360deg),
         repeating-radial-gradient(circle at center, #0F1218 0, #0F1218 2px, #161A22 3px, #0F1218 4px);
-    box-shadow: 14px 18px 45px rgba(0, 0, 0, 0.95), inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+    box-shadow: 12px 16px 40px rgba(0, 0, 0, 0.92), inset 0 0 0 1px rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.12);
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 5;
-    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), left 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: left 0.7s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
     will-change: transform, left;
     pointer-events: none;
 }
@@ -1098,10 +1109,10 @@ body[data-atmosphere="gothic"] .vinyl-center-label {
     box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.9);
 }
 
-/* Interaction: hover pulls disc out further and spins */
+/* Interaction: hover pulls disc out slightly and spins continuously */
 .vinyl-jacket-trigger:hover .vinyl-record-disc {
-    left: 185px;
-    transform: rotate(180deg);
+    left: 140px;
+    animation: vinylSpinLoop 3s linear infinite;
 }
 
 .vinyl-caption-bar {
@@ -1505,12 +1516,14 @@ body[data-atmosphere="gothic"] .vinyl-center-label {
     .vinyl-record-disc {
         width: 230px;
         height: 230px;
-        left: 100px;
-        top: 5px;
+        left: 65px;
+        top: 50%;
+        transform: translateY(-50%) rotate(0deg);
     }
 
     .vinyl-jacket-trigger:hover .vinyl-record-disc {
-        left: 130px;
+        left: 105px;
+        animation: vinylSpinLoop 3s linear infinite;
     }
 
     .vinyl-caption-bar {
