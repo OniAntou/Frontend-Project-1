@@ -473,93 +473,276 @@ body[data-atmosphere="gothic"] .hero-bg-img {
 }
 
 /* ==========================================================================
-   2. SECTION 01: THE MEMORY OF JADE
+   2. SECTION 01: THE MEMORY OF JADE (EDITORIAL MONOGRAPH SPREAD)
    ========================================================================== */
 .section-memory {
-    padding: 130px 0;
+    padding: 140px 0;
     border-bottom: 1px solid var(--border);
     background: var(--bg-surface);
     scroll-margin-top: 40px;
+    position: relative;
+    overflow: hidden;
     transition: background-color 0.5s ease;
 }
 
-.section-heading-group {
-    margin-bottom: 64px;
+.memory-stage-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 56px;
+    position: relative;
+    z-index: 2;
 }
 
-.section-heading-h2 {
+.memory-title-wrap {
+    position: relative;
+}
+
+.memory-watermark {
+    position: absolute;
+    top: -45px;
+    left: -20px;
     font-family: var(--font-kanji);
-    font-size: clamp(26px, 3.6vw, 42px);
-    font-weight: 800;
-    color: var(--text-pure);
-    letter-spacing: 1.5px;
-    line-height: 1.25;
+    font-size: 130px;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.025);
+    line-height: 1;
+    pointer-events: none;
+    z-index: 0;
+    user-select: none;
 }
 
-.memory-spread {
+body[data-atmosphere="gothic"] .memory-watermark {
+    color: rgba(181, 104, 255, 0.035);
+}
+
+.memory-stage-sub {
+    font-family: var(--font-serif-en);
+    font-size: 16px;
+    font-style: italic;
+    color: var(--text-secondary);
+}
+
+.memory-mosaic-spread {
     display: grid;
     grid-template-columns: 0.95fr 1.05fr;
     gap: 68px;
-    align-items: center;
+    align-items: start;
+    position: relative;
+    z-index: 2;
 }
 
-.art-click-frame {
-    background: none;
-    border: none;
+/* Left Column: Layered Museum Art Plate Cluster */
+.memory-visual-cluster {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.memory-main-frame {
+    width: 100%;
+    aspect-ratio: 4 / 4.8;
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    position: relative;
+    border: 1px solid var(--border);
+    background: var(--bg-void);
+    box-shadow: 0 32px 80px rgba(0, 0, 0, 0.9), 0 0 30px rgba(var(--c-jade-rgb), 0.08);
+    display: flex;
+    flex-direction: column;
     padding: 0;
     cursor: pointer;
-    text-align: inherit;
-    display: block;
+    text-align: left;
+}
+
+.memory-frame-inner {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
     width: 100%;
+    height: 100%;
 }
 
-.memory-art-box {
-    aspect-ratio: 4 / 5;
+.memory-frame-inner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 15%;
+    transition: transform 0.8s var(--ease-human);
 }
 
-.memory-art-box img {
-    object-position: top center;
+.memory-main-frame:hover .memory-frame-inner img {
+    transform: scale(1.03);
 }
 
-.memory-art-caption {
-    padding: 14px 20px;
-    background: var(--bg-void);
+.memory-frame-badge {
+    padding: 14px 22px;
+    background: rgba(5, 6, 8, 0.94);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     border-top: 1px solid var(--border);
     display: flex;
     justify-content: space-between;
+    align-items: center;
     font-family: var(--font-serif-en);
-    font-size: 15px;
-    color: var(--text-secondary);
+    width: 100%;
 }
 
-.memory-narrative {
+.badge-tag {
+    font-size: 15px;
+    color: var(--text-primary);
+}
+
+.badge-inspect {
+    font-size: 14px;
+    font-style: italic;
+    color: var(--c-jade);
+}
+
+.memory-quote-stamp {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px dashed var(--border-light);
+    border-radius: var(--radius-sm);
+    padding: 12px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.stamp-kanji {
+    font-family: var(--font-kanji);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--c-jade);
+}
+
+.stamp-en {
+    font-family: var(--font-serif-en);
+    font-size: 14px;
+    font-style: italic;
+    color: var(--text-muted);
+}
+
+/* Right Column: Editorial Essay, Drop Cap, & Resonance Triad */
+.memory-narrative-panel {
     display: flex;
     flex-direction: column;
-    gap: 22px;
+    gap: 32px;
 }
 
-.memory-prose {
-    color: var(--text-secondary);
+.memory-essay-block {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.memory-lead-prose {
+    color: var(--text-primary);
     font-size: 16px;
     line-height: 1.95;
 }
 
-.memory-quote-highlight {
-    border-left: 2px solid var(--c-jade);
-    padding-left: 22px;
-    margin: 8px 0;
+.memory-dropcap {
+    float: left;
+    font-family: var(--font-display);
+    font-size: 52px;
+    line-height: 0.85;
+    padding-top: 4px;
+    padding-right: 12px;
+    padding-bottom: 2px;
+    color: var(--c-jade);
+    font-weight: 900;
+}
+
+.memory-quote-banner {
+    background: rgba(0, 229, 153, 0.04);
+    border-left: 3px solid var(--c-jade);
+    padding: 16px 24px;
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+body[data-atmosphere="gothic"] .memory-quote-banner {
+    background: rgba(181, 104, 255, 0.05);
+}
+
+.banner-quote-jp {
     font-family: var(--font-kanji);
     font-size: 18px;
     font-weight: 700;
     color: var(--text-pure);
-    line-height: 1.7;
+    line-height: 1.5;
 }
 
-.memory-note {
+.banner-quote-sub {
+    font-family: var(--font-serif-en);
+    font-size: 15px;
+    color: var(--c-pink);
+}
+
+.memory-body-prose {
+    color: var(--text-secondary);
+    font-size: 15px;
+    line-height: 1.9;
+}
+
+/* 3 Memory Pillars (Interactive Hover Micro-Cards) */
+.memory-pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.memory-pillar-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 16px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    transition: var(--transition);
+}
+
+.memory-pillar-item:hover {
+    border-color: var(--c-jade);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.5), 0 0 16px var(--c-jade-dim);
+}
+
+.pillar-epoch {
+    font-family: var(--font-serif-en);
+    font-size: 13px;
+    font-style: italic;
+    color: var(--c-pink);
+}
+
+.pillar-name {
+    font-family: var(--font-kanji);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-pure);
+    line-height: 1.35;
+}
+
+.pillar-desc {
+    color: var(--text-secondary);
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.memory-footer-note {
     font-size: 14px;
     color: var(--text-muted);
     font-family: var(--font-serif-en);
     font-style: italic;
+    border-top: 1px solid var(--border-light);
+    padding-top: 16px;
 }
 
 /* ==========================================================================
@@ -1089,9 +1272,9 @@ body[data-atmosphere="gothic"] .hero-bg-img {
         padding: 20px 24px;
     }
 
-    .memory-spread, .music-spread {
+    .memory-mosaic-spread, .music-spread {
         grid-template-columns: 1fr;
-        gap: 40px;
+        gap: 48px;
     }
 
     .monolith-stage {
@@ -1118,6 +1301,10 @@ body[data-atmosphere="gothic"] .hero-bg-img {
 }
 
 @media (max-width: 768px) {
+    .memory-pillars-grid {
+        grid-template-columns: 1fr;
+    }
+
     .monolith-stage {
         flex-direction: column;
         height: auto;
