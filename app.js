@@ -5,11 +5,11 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     // =========================================================================
-    // 0. ATMOSPHERE THEME SWITCHER WITH CINEMATIC HORIZONTAL WIPE
+    // 0. ATMOSPHERE THEME SWITCHER WITH HORIZONTAL BEAM SWEEP
     // =========================================================================
     const atmosphereBtn = document.getElementById('atmosphere-toggle');
     const atmosphereLabel = document.getElementById('atmosphere-label');
-    const themeCurtain = document.getElementById('theme-curtain');
+    const themeBeamRunner = document.getElementById('theme-beam-runner');
     let isThemeTransitioning = false;
 
     const savedTheme = localStorage.getItem('rushia-atmosphere') || 'emerald';
@@ -26,13 +26,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const isCurrentGothic = document.body.getAttribute('data-atmosphere') === 'gothic';
             const nextTheme = isCurrentGothic ? 'emerald' : 'gothic';
 
-            if (themeCurtain) {
-                // Phase 1: Blade sweeps across from left to cover screen
-                themeCurtain.classList.remove('wipe-out');
-                themeCurtain.classList.add('wipe-in');
+            if (themeBeamRunner) {
+                // Reset animation
+                themeBeamRunner.classList.remove('is-sweeping');
+                void themeBeamRunner.offsetWidth; // Force reflow
+                themeBeamRunner.classList.add('is-sweeping');
 
+                // Switch theme exactly at midpoint as beam crosses the center
                 setTimeout(() => {
-                    // Midpoint: Screen is 100% covered -> switch theme seamlessly
                     if (nextTheme === 'gothic') {
                         document.body.setAttribute('data-atmosphere', 'gothic');
                         localStorage.setItem('rushia-atmosphere', 'gothic');
@@ -42,16 +43,13 @@ document.addEventListener('DOMContentLoaded', () => {
                         localStorage.setItem('rushia-atmosphere', 'emerald');
                         if (atmosphereLabel) atmosphereLabel.textContent = '✦ Emerald Dawn';
                     }
+                }, 280);
 
-                    // Phase 2: Blade sweeps out towards right to unveil new theme
-                    themeCurtain.classList.remove('wipe-in');
-                    themeCurtain.classList.add('wipe-out');
-
-                    setTimeout(() => {
-                        themeCurtain.classList.remove('wipe-out');
-                        isThemeTransitioning = false;
-                    }, 380);
-                }, 380);
+                // Clear after sweep completes (650ms)
+                setTimeout(() => {
+                    themeBeamRunner.classList.remove('is-sweeping');
+                    isThemeTransitioning = false;
+                }, 650);
             } else {
                 if (nextTheme === 'gothic') {
                     document.body.setAttribute('data-atmosphere', 'gothic');
