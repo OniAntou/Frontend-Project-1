@@ -110,7 +110,7 @@
                                     data-art-caption="High-resolution close-up portrait highlighting Uruha Rushia's gentle crimson gaze, jade ribbons, and signature butterfly motifs."
                                     data-art-tag="Plate 01 • Emerald Gaze">
                                 <div class="memory-canvas-inner">
-                                    <img src="assets/images/fanart_emerald_clean.png" alt="Uruha Rushia Emerald Gaze Portrait" />
+                                    <img src="assets/images/fanart_emerald_clean.png" alt="Uruha Rushia Emerald Gaze Portrait" class="art-parallax-img" />
                                 </div>
                             </button>
 
@@ -182,7 +182,7 @@
                     <!-- Monolith Slab 01: Debut Era Robe (Active by default) -->
                     <div class="monolith-slab is-active" data-slab="0">
                         <div class="monolith-bg-wrap">
-                            <img src="assets/images/fanart_debut_master.png" alt="Debut Era Robe Masterwork Artwork" />
+                            <img src="assets/images/fanart_debut_master.png" alt="Debut Era Robe Masterwork Artwork" class="art-parallax-img" />
                             <div class="monolith-gradient-overlay"></div>
                         </div>
 
@@ -216,7 +216,7 @@
                     <!-- Monolith Slab 02: Neko Twin Tails -->
                     <div class="monolith-slab" data-slab="1">
                         <div class="monolith-bg-wrap">
-                            <img src="assets/images/fanart_catears_clean.png" alt="Neko Twin-Tails 4th Costume Artwork" />
+                            <img src="assets/images/fanart_catears_clean.png" alt="Neko Twin-Tails 4th Costume Artwork" class="art-parallax-img" />
                             <div class="monolith-gradient-overlay"></div>
                         </div>
 
@@ -248,7 +248,7 @@
                     <!-- Monolith Slab 03: Gothic Evening Gown -->
                     <div class="monolith-slab" data-slab="2">
                         <div class="monolith-bg-wrap">
-                            <img src="assets/images/fanart_gothic_master.jpg" alt="Gothic Necromancer 3rd Costume Artwork" />
+                            <img src="assets/images/fanart_gothic_master.jpg" alt="Gothic Necromancer 3rd Costume Artwork" class="art-parallax-img" />
                             <div class="monolith-gradient-overlay"></div>
                         </div>
 
@@ -304,7 +304,7 @@
                                 data-art-tag="Original Single • 2021">
                             <div class="vinyl-display-unit">
                                 <div class="vinyl-jacket-sleeve art-perspective-card">
-                                    <img src="assets/images/iris_cover.png" alt="Iris Album Cover" />
+                                    <img src="assets/images/iris_cover.png" alt="Iris Album Cover" class="art-parallax-img" />
                                 </div>
                                 <div class="vinyl-record-disc" aria-hidden="true">
                                     <div class="vinyl-groove-ring ring-1"></div>
@@ -379,23 +379,40 @@
         </div>
     </footer>
 
-    <!-- 6. LIGHTBOX MODAL -->
-    <div id="art-inspector-modal" class="inspector-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Artwork Preview">
+    <!-- 6. CURATORIAL ART INSPECTION STAGE (4K FINE-ART LIGHTBOX) -->
+    <div id="art-inspector-modal" class="inspector-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Curatorial Artwork Inspection Stage">
         <div class="inspector-backdrop" id="inspector-backdrop"></div>
-        <div class="inspector-dialog">
-            <button type="button" class="inspector-close-btn" id="inspector-close" aria-label="Close Preview">
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-                    <line x1="1" y1="1" x2="13" y2="13"></line>
-                    <line x1="13" y1="1" x2="1" y2="13"></line>
-                </svg>
-            </button>
-            <div class="inspector-img-box">
-                <img id="inspector-img" src="assets/images/fanart_hero_portrait.png" alt="Exhibition Art Preview" />
+        <div class="inspector-curatorial-stage">
+            <!-- Top Curatorial Bar -->
+            <div class="inspector-top-bar">
+                <div class="inspector-top-meta">
+                    <span class="inspector-code" id="inspector-tag">PLATE // EXHIBITION MASTER</span>
+                    <span class="inspector-kanji-badge">特別鑑賞</span>
+                </div>
+                <button type="button" class="inspector-close-btn" id="inspector-close" aria-label="Close Inspection Stage">
+                    <span class="close-label">CLOSE</span>
+                    <span class="close-icon">✕</span>
+                </button>
             </div>
-            <div class="inspector-info-box">
-                <span id="inspector-tag" class="inspector-tag">Exhibition Piece</span>
-                <h3 id="inspector-title" class="inspector-title"></h3>
-                <p id="inspector-caption" class="inspector-caption"></p>
+
+            <!-- Central 4K Canvas Display -->
+            <div class="inspector-canvas-stage">
+                <div class="inspector-canvas-mount">
+                    <img id="inspector-img" src="assets/images/fanart_hero_portrait.png" alt="Exhibition Art Preview" />
+                </div>
+            </div>
+
+            <!-- Bottom Curatorial Plaque Strip -->
+            <div class="inspector-plaque-strip">
+                <div class="plaque-title-wrap">
+                    <h3 id="inspector-title" class="inspector-title"></h3>
+                    <p id="inspector-caption" class="inspector-caption"></p>
+                </div>
+                <div class="plaque-specs-wrap">
+                    <span class="spec-badge">4K ULTRA HD</span>
+                    <span class="spec-badge">FINE-ART ARCHIVE</span>
+                    <span class="spec-badge">HOLOLIVE FANTASY</span>
+                </div>
             </div>
         </div>
     </div>
