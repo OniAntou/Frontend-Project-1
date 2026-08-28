@@ -166,7 +166,6 @@ document.addEventListener('DOMContentLoaded', () => {
         modalImg.alt = title;
         modalTitle.textContent = title;
         modalCaption.textContent = caption;
-        modalTag.textContent = tag.toUpperCase();
 
         modal.classList.add('is-active');
         modal.setAttribute('aria-hidden', 'false');
@@ -257,34 +256,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('scroll', updateMinimalNav, { passive: true });
     updateMinimalNav();
-
-    // =========================================================================
-    // 6. FINE-ART FRAME PARALLAX DEPTH ENGINE
-    // =========================================================================
-    const parallaxImages = document.querySelectorAll('.art-parallax-img');
-    let isParallaxTicking = false;
-
-    function updateParallaxDepth() {
-        const windowHeight = window.innerHeight;
-        parallaxImages.forEach(img => {
-            const rect = img.getBoundingClientRect();
-            if (rect.bottom >= 0 && rect.top <= windowHeight) {
-                const elementCenter = rect.top + rect.height / 2;
-                const progress = (elementCenter - windowHeight / 2) / (windowHeight / 2);
-                const translateY = progress * -18;
-                img.style.transform = `translate3d(0, ${translateY.toFixed(1)}px, 0) scale(1.06)`;
-            }
-        });
-        isParallaxTicking = false;
-    }
-
-    function onScrollParallax() {
-        if (!isParallaxTicking) {
-            isParallaxTicking = true;
-            requestAnimationFrame(updateParallaxDepth);
-        }
-    }
-
-    window.addEventListener('scroll', onScrollParallax, { passive: true });
-    updateParallaxDepth();
 });

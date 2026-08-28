@@ -110,7 +110,7 @@
                                     data-art-caption="High-resolution close-up portrait highlighting Uruha Rushia's gentle crimson gaze, jade ribbons, and signature butterfly motifs."
                                     data-art-tag="Plate 01 • Emerald Gaze">
                                 <div class="memory-canvas-inner">
-                                    <img src="assets/images/fanart_emerald_clean.png" alt="Uruha Rushia Emerald Gaze Portrait" class="art-parallax-img" />
+                                    <img src="assets/images/fanart_emerald_clean.png" alt="Uruha Rushia Emerald Gaze Portrait" />
                                 </div>
                             </button>
 
@@ -125,7 +125,7 @@
                         <div class="memory-plate-strip">
                             <span class="plate-num">PLATE 01</span>
                             <span class="plate-name">Emerald Gaze (翡翠の眼差し)</span>
-                            <span class="plate-action">[ View 4K ⤢ ]</span>
+                            <span class="plate-action">Expand</span>
                         </div>
                     </div>
 
@@ -182,7 +182,7 @@
                     <!-- Monolith Slab 01: Debut Era Robe (Active by default) -->
                     <div class="monolith-slab is-active" data-slab="0">
                         <div class="monolith-bg-wrap">
-                            <img src="assets/images/fanart_debut_master.png" alt="Debut Era Robe Masterwork Artwork" class="art-parallax-img" />
+                            <img src="assets/images/fanart_debut_master.png" alt="Debut Era Robe Masterwork Artwork" />
                             <div class="monolith-gradient-overlay"></div>
                         </div>
 
@@ -202,7 +202,7 @@
                                         data-art-title="Soul Butterfly Robe (蝶の霊装)" 
                                         data-art-caption="The iconic debut robe with jade butterfly ribbons and skull ornaments that introduced her to the human world in 2019."
                                         data-art-tag="Debut Robe • 2019">
-                                    [ View Full Image ⤢ ]
+                                    Explore &nearr;
                                 </button>
                             </div>
 
@@ -216,7 +216,7 @@
                     <!-- Monolith Slab 02: Neko Twin Tails -->
                     <div class="monolith-slab" data-slab="1">
                         <div class="monolith-bg-wrap">
-                            <img src="assets/images/fanart_catears_clean.png" alt="Neko Twin-Tails 4th Costume Artwork" class="art-parallax-img" />
+                            <img src="assets/images/fanart_catears_clean.png" alt="Neko Twin-Tails 4th Costume Artwork" />
                             <div class="monolith-gradient-overlay"></div>
                         </div>
 
@@ -234,7 +234,7 @@
                                         data-art-title="Neko Twin-Tails (猫耳ツイン)" 
                                         data-art-caption="Wholesome high-resolution 2250x3000px artwork showcasing her beloved cat ear silhouette and playful charm."
                                         data-art-tag="4th Costume • 2021">
-                                    [ View Full Image ⤢ ]
+                                    Explore &nearr;
                                 </button>
                             </div>
 
@@ -248,7 +248,7 @@
                     <!-- Monolith Slab 03: Gothic Evening Gown -->
                     <div class="monolith-slab" data-slab="2">
                         <div class="monolith-bg-wrap">
-                            <img src="assets/images/fanart_gothic_master.jpg" alt="Gothic Necromancer 3rd Costume Artwork" class="art-parallax-img" />
+                            <img src="assets/images/fanart_gothic_master.jpg" alt="Gothic Necromancer 3rd Costume Artwork" />
                             <div class="monolith-gradient-overlay"></div>
                         </div>
 
@@ -266,7 +266,7 @@
                                         data-art-title="Gothic Necromancer (ゴシック)" 
                                         data-art-caption="An aristocratic black lace evening gown showcasing her authoritative status as an Underworld Princess."
                                         data-art-tag="3rd Costume • 2020">
-                                    [ View Full Image ⤢ ]
+                                    Explore &nearr;
                                 </button>
                             </div>
 
@@ -304,7 +304,7 @@
                                 data-art-tag="Original Single • 2021">
                             <div class="vinyl-display-unit">
                                 <div class="vinyl-jacket-sleeve art-perspective-card">
-                                    <img src="assets/images/iris_cover.png" alt="Iris Album Cover" class="art-parallax-img" />
+                                    <img src="assets/images/iris_cover.png" alt="Iris Album Cover" />
                                 </div>
                                 <div class="vinyl-record-disc" aria-hidden="true">
                                     <div class="vinyl-groove-ring ring-1"></div>
@@ -319,7 +319,7 @@
                         </button>
                         <div class="vinyl-caption-bar">
                             <span class="vinyl-speed-tag">45 RPM • COLLECTOR VINYL</span>
-                            <span class="vinyl-inspect-tag">[ Inspect Sleeve ⤢ ]</span>
+                            <span class="vinyl-inspect-tag">Explore &nearr;</span>
                         </div>
                     </div>
 
@@ -379,40 +379,17 @@
         </div>
     </footer>
 
-    <!-- 6. CURATORIAL ART INSPECTION STAGE (4K FINE-ART LIGHTBOX) -->
-    <div id="art-inspector-modal" class="inspector-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Curatorial Artwork Inspection Stage">
+    <!-- 6. MINIMAL FULLSCREEN ARTWORK VIEWER -->
+    <div id="art-inspector-modal" class="inspector-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Artwork View">
         <div class="inspector-backdrop" id="inspector-backdrop"></div>
-        <div class="inspector-curatorial-stage">
-            <!-- Top Curatorial Bar -->
-            <div class="inspector-top-bar">
-                <div class="inspector-top-meta">
-                    <span class="inspector-code" id="inspector-tag">PLATE // EXHIBITION MASTER</span>
-                    <span class="inspector-kanji-badge">特別鑑賞</span>
-                </div>
-                <button type="button" class="inspector-close-btn" id="inspector-close" aria-label="Close Inspection Stage">
-                    <span class="close-label">CLOSE</span>
-                    <span class="close-icon">✕</span>
-                </button>
+        <div class="inspector-view-wrap">
+            <button type="button" class="inspector-close-btn" id="inspector-close" aria-label="Close View">✕</button>
+            <div class="inspector-img-frame">
+                <img id="inspector-img" src="assets/images/fanart_hero_portrait.png" alt="Artwork View" />
             </div>
-
-            <!-- Central 4K Canvas Display -->
-            <div class="inspector-canvas-stage">
-                <div class="inspector-canvas-mount">
-                    <img id="inspector-img" src="assets/images/fanart_hero_portrait.png" alt="Exhibition Art Preview" />
-                </div>
-            </div>
-
-            <!-- Bottom Curatorial Plaque Strip -->
-            <div class="inspector-plaque-strip">
-                <div class="plaque-title-wrap">
-                    <h3 id="inspector-title" class="inspector-title"></h3>
-                    <p id="inspector-caption" class="inspector-caption"></p>
-                </div>
-                <div class="plaque-specs-wrap">
-                    <span class="spec-badge">4K ULTRA HD</span>
-                    <span class="spec-badge">FINE-ART ARCHIVE</span>
-                    <span class="spec-badge">HOLOLIVE FANTASY</span>
-                </div>
+            <div class="inspector-meta-bar">
+                <h3 id="inspector-title" class="inspector-title"></h3>
+                <p id="inspector-caption" class="inspector-caption"></p>
             </div>
         </div>
     </div>
