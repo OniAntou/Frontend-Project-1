@@ -56,7 +56,7 @@ body[data-atmosphere="gothic"] {
 }
 
 body[data-atmosphere="gothic"] .hero-bg-img {
-    filter: brightness(0.48) contrast(1.15) hue-rotate(240deg);
+    filter: brightness(0.48) contrast(1.15) hue-rotate(240deg) !important;
 }
 
 /* Global Reset */
@@ -230,6 +230,16 @@ a:focus-visible, button:focus-visible {
     background-repeat: repeat;
 }
 
+/* Scramble Text Hover Utility */
+.scramble-hover-trigger {
+    cursor: crosshair;
+    transition: color 0.3s ease;
+}
+
+.scramble-hover-trigger:hover {
+    color: var(--c-jade);
+}
+
 /* ==========================================================================
    ULTRA-MINIMAL SCROLL & SECTION DASHES
    ========================================================================== */
@@ -317,9 +327,8 @@ a:focus-visible, button:focus-visible {
     object-fit: cover;
     object-position: center 25%;
     filter: brightness(0.55) contrast(1.1);
-    animation: heroBackdropDrift 24s ease-in-out infinite alternate;
     transform: translateZ(0);
-    will-change: transform;
+    will-change: transform, filter, opacity;
     backface-visibility: hidden;
     transition: filter 0.6s ease;
 }
@@ -342,7 +351,6 @@ a:focus-visible, button:focus-visible {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    animation: fadeUpStagger 0.9s var(--ease-human) 0.1s both;
 }
 
 .site-brand {
@@ -436,7 +444,6 @@ a:focus-visible, button:focus-visible {
     color: var(--c-pink);
     margin-bottom: 8px;
     display: block;
-    animation: fadeUpStagger 0.9s var(--ease-human) 0.3s both;
 }
 
 .hero-name {
@@ -447,7 +454,21 @@ a:focus-visible, button:focus-visible {
     letter-spacing: 2px;
     color: var(--text-pure);
     margin-bottom: 6px;
-    animation: fadeUpStagger 1s var(--ease-human) 0.4s both;
+    perspective: 1000px;
+}
+
+.hero-char-wrap {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: bottom;
+    padding-bottom: 2px;
+}
+
+.hero-char-inner {
+    display: inline-block;
+    will-change: transform, opacity;
+    transform-origin: center bottom;
+    backface-visibility: hidden;
 }
 
 .hero-kanji {
@@ -458,7 +479,6 @@ a:focus-visible, button:focus-visible {
     letter-spacing: 6px;
     margin-bottom: 24px;
     display: block;
-    animation: fadeUpStagger 1s var(--ease-human) 0.5s both;
 }
 
 .hero-quote {
@@ -469,7 +489,6 @@ a:focus-visible, button:focus-visible {
     max-width: 680px;
     margin-bottom: 20px;
     line-height: 1.65;
-    animation: fadeUpStagger 1.1s var(--ease-human) 0.6s both;
 }
 
 .hero-intro {
@@ -478,7 +497,6 @@ a:focus-visible, button:focus-visible {
     line-height: 1.85;
     max-width: 580px;
     margin-bottom: 36px;
-    animation: fadeUpStagger 1.1s var(--ease-human) 0.7s both;
 }
 
 .hero-link {
@@ -495,7 +513,6 @@ a:focus-visible, button:focus-visible {
     border-bottom: 1px solid var(--c-jade);
     width: fit-content;
     transition: var(--transition);
-    animation: fadeUpStagger 1.2s var(--ease-human) 0.8s both;
 }
 
 .hero-link:hover {
@@ -516,7 +533,6 @@ a:focus-visible, button:focus-visible {
     font-family: var(--font-serif-en);
     font-size: 16px;
     color: var(--text-primary);
-    animation: fadeUpStagger 1s var(--ease-human) 0.9s both;
 }
 
 .footer-bar-left {
